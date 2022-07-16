@@ -10,10 +10,11 @@ public class Drag_Object : MonoBehaviour
 
     public Vector3 lastLocation;
     public bool isDraggable = false;
+    public bool isDiceMoving = false;
 
     private void OnMouseDown()
     {
-        if (isDraggable)
+        if (isDraggable && isDiceMoving == false)
         {
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffSet = gameObject.transform.position - GetMouseWorldPos();
@@ -34,7 +35,7 @@ public class Drag_Object : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (isDraggable)
+        if (isDraggable && isDiceMoving == false)
         {
             transform.position = GetMouseWorldPos() /*+ mOffSet*/;
             if (Input.GetMouseButtonDown(1))
@@ -49,7 +50,7 @@ public class Drag_Object : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (isDraggable)
+        if (isDraggable && isDiceMoving == false)
         {
             var rayOrigin = Camera.main.transform.position;
             var rayDirection = GetMouseWorldPos() - Camera.main.transform.position;
