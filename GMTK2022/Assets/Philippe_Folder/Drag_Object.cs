@@ -27,7 +27,14 @@ public class Drag_Object : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = GetMouseWorldPos() + mOffSet;
+        transform.position = GetMouseWorldPos() /*+ mOffSet*/;
+        if (Input.GetMouseButtonDown(1))
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(
+            transform.rotation.eulerAngles.x,
+            transform.rotation.eulerAngles.y + 90f,
+            transform.rotation.eulerAngles.z));
+        }
     }
 
     private void OnMouseUp()
@@ -47,16 +54,5 @@ public class Drag_Object : MonoBehaviour
         Cursor.visible = true;
     }
 
-    private void Update()
-    {
-        
-    if (Input.GetMouseButtonDown(1))
-            {
-              transform.rotation = Quaternion.Euler(new Vector3(
-              transform.rotation.eulerAngles.x,
-              transform.rotation.eulerAngles.y + 90f,
-              transform.rotation.eulerAngles.z));
-            }
-    }
 
 }
