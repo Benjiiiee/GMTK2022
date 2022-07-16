@@ -8,8 +8,9 @@ public class DieController : MonoBehaviour
 {
     public static Action StepCompleted;
     public static Action MoveCompleted;
+    public static Action<DieTypes, int> StoreDie;
 
-    public DieTypes DieType { get => CurrentDieType; set => ChangeDieType(value); }
+    public DieTypes DieType { get => CurrentDieType; set => ChangeDieType(value, FaceValue); }
     private DieTypes CurrentDieType;
     public int FaceValue { get => CurrentFaceValue; set => SetFaceValue(value); }
     private int CurrentFaceValue;
@@ -28,13 +29,27 @@ public class DieController : MonoBehaviour
 
     private IEnumerator MovementCoroutine;
 
+    private void OnEnable() {
+        StoredDiceController.RetrieveDie += RetrieveDie;
+    }
+
+    private void OnDisable() {
+        StoredDiceController.RetrieveDie -= RetrieveDie;
+    }
+
     public void Spawn(Vector3Int StartPosition, DieTypes StartingType, int StartingFaceValue) {
         GridPosition = StartPosition;
         transform.position = StartPosition;
         DieType = StartingType;
         FaceValue = StartingFaceValue;
+
+        if(StoreDie != null) {
+            if (StartingType != DieTypes.D4) StoreDie(DieTypes.D4, 4);
+            if (StartingType != DieTypes.D6) StoreDie(DieTypes.D6, 6);
+            if (StartingType != DieTypes.D8) StoreDie(DieTypes.D8, 8);
+        }
     }
-    private void ChangeDieType(DieTypes newType) {
+    private void ChangeDieType(DieTypes newType, int faceValue) {
         switch (DieType) {
             case DieTypes.D4:
                 D4Mesh.SetActive(false);
@@ -66,7 +81,13 @@ public class DieController : MonoBehaviour
                 break;
         }
 
+        FaceValue = faceValue;
         CurrentDieType = newType;
+    }
+
+    private void RetrieveDie(DieTypes type, int faceValue) {
+        if (StoreDie != null) StoreDie(DieType, FaceValue);
+        ChangeDieType(type, faceValue);
     }
 
     private void SetDirection(Vector3Int newDir) {
