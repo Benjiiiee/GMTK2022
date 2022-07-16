@@ -35,7 +35,6 @@ public class GridAnchor : MonoBehaviour
                 tile = tc.tile;
             }
         }
-        Debug.Log(colliders.Length);
     }
 
     private void SnapToGrid()
