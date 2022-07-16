@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class GridManager : MonoBehaviour
 {
     public float distance = 1f;
     public Vector3Int gridSize;
     public GridAnchor gridAnchor;
-    public GridAnchor[,,] gridArray;
+    private GameObject[,,] gridArray;
 
     public static GridManager instance;
 
     private void Awake()
     {
-        if(instance == null)
+        gridArray = new GameObject[gridSize.x, gridSize.y, gridSize.z];
+        if (instance == null)
         {
             instance = this;
         }
@@ -22,9 +23,15 @@ public class GridManager : MonoBehaviour
 
     public GridAnchor GetGridAnchor(Vector3Int gridPos) {
         if(gridPos.x < gridSize.x && gridPos.y < gridSize.y && gridPos.z < gridSize.z && gridPos.x >= 0 && gridPos.y >= 0 && gridPos.z >= 0) {
-            return gridArray[gridPos.x, gridPos.y, gridPos.z];
+            return gridArray[gridPos.x, gridPos.y, gridPos.z].GetComponent<GridAnchor>();
         }
         return null;
+    }
+
+    public void SetGridAnchor(Vector3Int gridPos, GridAnchor anchor) {
+        if (gridPos.x < gridSize.x && gridPos.y < gridSize.y && gridPos.z < gridSize.z && gridPos.x >= 0 && gridPos.y >= 0 && gridPos.z >= 0) {
+            gridArray[gridPos.x, gridPos.y, gridPos.z] = anchor.gameObject;
+        }
     }
 
     public void InitiateGrid()
@@ -32,7 +39,7 @@ public class GridManager : MonoBehaviour
         // Clear current grid, if it exists
         ClearGrid();
 
-        gridArray = new GridAnchor[gridSize.x, gridSize.y, gridSize.z];
+        gridArray = new GameObject[gridSize.x, gridSize.y, gridSize.z];
         for (int y = 0; y < gridSize.y; y++)
         {
             for (int z = 0; z < gridSize.z; z++)
@@ -42,9 +49,8 @@ public class GridManager : MonoBehaviour
                     if (gridAnchor != null)
                     {
                         GameObject temp = Instantiate(gridAnchor.gameObject, new Vector3(x, y, z), Quaternion.identity);
-                        gridArray[x, y, z] = temp.GetComponent<GridAnchor>();
+                        gridArray[x, y, z] = temp;
                         temp.GetComponent<GridAnchor>().gridPosition = new Vector3Int(x, y, z);
-                        
                     }
                 }
             }
@@ -65,4 +71,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    private void Update() {
+        Debug.Log("Grid Anchors: " + gridArray.Length);
+    }
 }

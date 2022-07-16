@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    public GridManager gridManager;
+//    public GridManager gridManager;
     public GameObject DiePrefab;
 
     private DieController dieController;
@@ -28,14 +28,18 @@ public class LevelManager : MonoBehaviour
         DieController.MoveCompleted += OnMoveCompleted;
     }
 
+    private void OnDisable() {
+        DieController.StepCompleted -= OnStepCompleted;
+        DieController.MoveCompleted -= OnMoveCompleted;
+    }
+
     private void Start() {
         StartCoroutine(InitializeLevel());
     }
 
     private IEnumerator InitializeLevel() {
         yield return new WaitForSeconds(0.1f);
-        if(gridManager.gridArray == null)
-            gridManager.InitiateGrid();
+        GridManager.instance.InitiateGrid();
         dieController = FindObjectOfType<DieController>();
         if(dieController == null) {
             GameObject DieInstance = Instantiate(DiePrefab, StartingGridPosition, Quaternion.identity);
@@ -56,18 +60,22 @@ public class LevelManager : MonoBehaviour
         Debug.DrawLine(gridPosition, tilePos, Color.green, 1.0f);
 
         // Get tile
-        GridAnchor anchor = gridManager.GetGridAnchor(tilePos);
+        GridAnchor anchor = GridManager.instance.GetGridAnchor(tilePos);
         if (anchor != null && anchor.tile != null) return anchor.tile;
         else return new EmptyTile(tilePos);
     }
 
     private void OnStepCompleted() {
-        if (gridManager.GetGridAnchor(dieController.GridPosition).tile != null && gridManager.GetGridAnchor(dieController.GridPosition).tile is GoalTile) {
+        if (GridManager.instance.GetGridAnchor(dieController.GridPosition).tile != null && GridManager.instance.GetGridAnchor(dieController.GridPosition).tile is GoalTile) {
             dieController.StopMovement();
             GameManager.instance.GoToMainMenu();
         }
     }
 
     private void OnMoveCompleted() {
+    }
+
+    private void OnDestroy() {
+        instance = null;
     }
 }

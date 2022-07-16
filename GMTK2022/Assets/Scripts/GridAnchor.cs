@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class GridAnchor : MonoBehaviour
 {
     public Vector3Int gridPosition;
@@ -20,11 +20,11 @@ public class GridAnchor : MonoBehaviour
     private void Update()
     {
         SnapToGrid();
-        if(gridManager != null && gridManager.gridArray != null) gridManager.gridArray[gridPosition.x, gridPosition.y, gridPosition.z] = this;
+        if(gridManager != null) gridManager.SetGridAnchor(gridPosition, this);
 
         // Check for tiles
-        Collider[] colliders = Physics.OverlapSphere(gridPosition, 0.2f, LayerMask.GetMask("Grid"), QueryTriggerInteraction.Collide);
-        if(colliders.Length <= 1) {
+        Collider[] colliders = Physics.OverlapSphere(gridPosition, 0.2f, LayerMask.GetMask("Grid"));
+        if(colliders.Length < 1) {
             tile = null;
         }
         else for (int i = 0; i < colliders.Length; i++) {
