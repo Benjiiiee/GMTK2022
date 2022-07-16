@@ -2,12 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class GridManager : MonoBehaviour
 {
     public float distance = 1f;
     public Vector3Int gridSize;
     public GridAnchor gridAnchor;
     public GridAnchor[,,] gridArray;
+
+    public static GridManager instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     public void InitiateGrid()
     {
