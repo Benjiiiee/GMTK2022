@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 1
-  gridSize: {x: 0, y: 0, z: 0}
+  gridSize: {x: 5, y: 2, z: 5}
+  gridAnchor: {fileID: 4015585428613941286, guid: c1c66e736420e4b44aeba1133d14ac00, type: 3}
