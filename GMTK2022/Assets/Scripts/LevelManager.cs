@@ -65,7 +65,10 @@ public class LevelManager : MonoBehaviour
     }
 
     private void OnStepCompleted() {
-        if (dieController.GridPosition == EndingGridPosition) Debug.Log("Win!");
+        if (gridManager.GetGridAnchor(dieController.GridPosition).tile is GoalTile) {
+            dieController.StopMovement();
+            GameManager.instance.GoToMainMenu();
+        }
     }
 
     private void OnMoveCompleted() {

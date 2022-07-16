@@ -189,6 +189,10 @@ public class DieController : MonoBehaviour
     private void ShowFaceValue() {
         if (TXT_FaceValue != null) TXT_FaceValue.enabled = true;
     }
+
+    public void StopMovement() {
+        if (MovementCoroutine != null) StopCoroutine(MovementCoroutine);
+    }
 }
 
 public enum DieTypes
