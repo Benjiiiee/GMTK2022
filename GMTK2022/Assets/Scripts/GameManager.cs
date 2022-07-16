@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
         switch (state) {
             case GameStates.Initialize:
                 if (stateTransition == null) {
-                    stateTransition = GoToSceneCollection(FindSceneCollectionByName("TitleScreen"));
+                    stateTransition = GoToSceneCollection(FindSceneCollectionByName("Game"));
                     StartCoroutine(stateTransition);
                 }
                 break;
