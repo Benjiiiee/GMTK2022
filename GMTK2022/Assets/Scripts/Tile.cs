@@ -14,17 +14,17 @@ public class Tile
     }
 
     // Default tile behavior: maintains direction, reduces steps by cost
-    public virtual bool EnterTile(Vector3Int currentGridPosition, Vector3Int currentDirection, int currentSteps, out Vector3Int nextDirection, out int nextSteps, out Vector3Int nextGridPosition) {
-        if(currentSteps >= MovementCost) {
-            nextDirection = new Vector3Int(currentDirection.x, 0, currentDirection.z);
-            nextSteps = Math.Clamp(currentSteps - MovementCost, 0, int.MaxValue);
+    public virtual bool EnterTile(DieController die, out Vector3Int nextDirection, out int nextSteps, out Vector3Int nextGridPosition) {
+        if(die.Steps >= MovementCost) {
+            nextDirection = die.LastHorizontalDirection;
+            nextSteps = Math.Clamp(die.Steps - MovementCost, 0, int.MaxValue);
             nextGridPosition = GridPosition;
             return true;
         }
 
-        nextDirection = currentDirection;
-        nextSteps = currentSteps;
-        nextGridPosition = currentGridPosition;
+        nextDirection = die.Direction;
+        nextSteps = die.Steps;
+        nextGridPosition = die.GridPosition;
         return false;
     } 
 }

@@ -11,8 +11,10 @@ public class DieController : MonoBehaviour
     public DieTypes DieType { get => CurrentDieType; set => ChangeDieType(value); }
     private DieTypes CurrentDieType;
     public int FaceValue;
-    public int RemainingSteps;
-    public Vector3Int Direction;
+    public int Steps;
+    public Vector3Int Direction { get => CurrentDirection; set => SetDirection(value); }
+    private Vector3Int CurrentDirection;
+    public Vector3Int LastHorizontalDirection;
     public Vector3Int GridPosition;
 
     public GameObject D4Mesh;
@@ -59,9 +61,14 @@ public class DieController : MonoBehaviour
         CurrentDieType = newType;
     }
 
+    private void SetDirection(Vector3Int newDir) {
+        CurrentDirection = newDir;
+        if (newDir.x != 0 || newDir.z != 0) LastHorizontalDirection = new Vector3Int(newDir.x, 0, newDir.z);
+    }
+
     public void Shoot(Vector3Int direction) {
         Direction = direction;
-        RemainingSteps = FaceValue;
+        Steps = FaceValue;
         if (MovementCoroutine == null) {
             MovementCoroutine = Movement();
             StartCoroutine(MovementCoroutine);
@@ -76,7 +83,13 @@ public class DieController : MonoBehaviour
         // Give the tile the die's state: Direction, RemainingSteps
         // The tile returns the die's next state: new Direction, new RemainingSteps, new GridPosition
         // If we moved, return true; otherwise, return false
-        return nextTile.EnterTile(GridPosition, Direction, RemainingSteps, out Direction, out RemainingSteps, out GridPosition);
+        bool HasMoved = nextTile.EnterTile(this, out Vector3Int nextDirection, out int remainingSteps, out Vector3Int nextGridPosition);
+
+        Direction = nextDirection;
+        Steps = remainingSteps;
+        GridPosition = nextGridPosition;
+
+        return HasMoved;
     }
 
     private IEnumerator Movement() {
@@ -85,8 +98,9 @@ public class DieController : MonoBehaviour
         // Begin movement
         while (NextStep()) {
             float moveTimer = 0f;
-            while(moveTimer < 1f) {
-                transform.position = Vector3.Lerp(LastGridPosition, GridPosition, moveTimer);
+            float moveDuration = 0.5f;
+            while(moveTimer < moveDuration) {
+                transform.position = Vector3.Lerp(LastGridPosition, GridPosition, moveTimer / moveDuration);
                 yield return null;
                 moveTimer += Time.deltaTime;
             }

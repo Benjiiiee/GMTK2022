@@ -55,14 +55,17 @@ public class LevelManager : MonoBehaviour
     }
 
     public Tile GetTileInDirection(Vector3Int gridPosition, Vector3Int dir) {
+        Vector3Int tilePos = gridPosition + dir;
+
         // Check for walls
         RaycastHit hit;
         if(Physics.Raycast(gridPosition, dir, out hit, 1f, LayerMask.GetMask("Wall"))){
             // return a Wall tile
+            return new WallTile(tilePos);
         }
+        Debug.DrawLine(gridPosition, tilePos, Color.green, 1.0f);
 
         // Get tile
-        Vector3Int tilePos = gridPosition + dir;
         GridAnchor anchor = gridManager.GetGridAnchor(tilePos);
         if (anchor != null && anchor.tile != null) return anchor.tile;
         else return new EmptyTile(tilePos);
