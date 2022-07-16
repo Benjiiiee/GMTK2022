@@ -98,7 +98,10 @@ MonoBehaviour:
   startPos: {fileID: 1968025713}
   stepPos: {fileID: 7603858432316353560}
   endPos: {fileID: 4040258502553762117}
+  desiredDuration: 3
+  elapsedTime: 0
   sword: {fileID: 6789721288270109348}
+  stuff: 0
 --- !u!1 &4040258502553762117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2648328303586341156, guid: 2810e334fa1a52b40b21f12ce91e2cc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.62
+      value: 7.81
       objectReference: {fileID: 0}
     - target: {fileID: 2648328303586341156, guid: 2810e334fa1a52b40b21f12ce91e2cc0, type: 3}
       propertyPath: m_LocalPosition.z
