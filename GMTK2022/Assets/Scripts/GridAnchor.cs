@@ -6,9 +6,7 @@ using UnityEngine;
 public class GridAnchor : MonoBehaviour
 {
     public Vector3Int gridPosition;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
     private GridManager gridManager;
 
     private void Awake()
@@ -37,9 +35,6 @@ public class GridAnchor : MonoBehaviour
         transform.localPosition = gridPosition;
     }
 
-    
-=======
->>>>>>> Stashed changes
     public Tile tile;
 
     // TODO: Replace with actual tile generation logic
@@ -51,8 +46,5 @@ public class GridAnchor : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 0.2f);
     }
-<<<<<<< Updated upstream
-=======
->>>>>>> e6eea15a35cf9b5a3dd2c5a914197cef4dfeb894
->>>>>>> Stashed changes
+
 }
