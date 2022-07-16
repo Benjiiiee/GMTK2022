@@ -17,7 +17,21 @@ public class GridAnchor : MonoBehaviour
     private void Update()
     {
         SnapToGrid();
-        gridManager.gridArray[gridPosition.x, gridPosition.y, gridPosition.z] = this;
+        if(gridManager != null && gridManager.gridArray != null) gridManager.gridArray[gridPosition.x, gridPosition.y, gridPosition.z] = this;
+
+        // Check for tiles
+        Collider[] colliders = Physics.OverlapSphere(gridPosition, 0.2f, LayerMask.GetMask("Grid"), QueryTriggerInteraction.Collide);
+        if(colliders.Length == 0) {
+            tile = null;
+        }
+        else for (int i = 0; i < colliders.Length; i++) {
+            TileComponent tc = colliders[i].GetComponent<TileComponent>();
+            if (tc != null && tc.tile != null) {
+                tc.tile.GridPosition = gridPosition;
+                tc.transform.position = gridPosition;
+                tile = tc.tile;
+            }
+        }
     }
 
     private void SnapToGrid()
@@ -46,5 +60,4 @@ public class GridAnchor : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 0.2f);
     }
-
 }

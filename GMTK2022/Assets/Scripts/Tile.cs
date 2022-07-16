@@ -16,7 +16,7 @@ public class Tile
     // Default tile behavior: maintains direction, reduces steps by cost
     public virtual bool EnterTile(Vector3Int currentGridPosition, Vector3Int currentDirection, int currentSteps, out Vector3Int nextDirection, out int nextSteps, out Vector3Int nextGridPosition) {
         if(currentSteps >= MovementCost) {
-            nextDirection = currentDirection;
+            nextDirection = new Vector3Int(currentDirection.x, 0, currentDirection.z);
             nextSteps = Math.Clamp(currentSteps - MovementCost, 0, int.MaxValue);
             nextGridPosition = GridPosition;
             return true;

@@ -31,11 +31,13 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Start() {
-        InitializeLevel();
+        StartCoroutine(InitializeLevel());
     }
 
-    private void InitializeLevel() {
-        gridManager.InitiateGrid();
+    private IEnumerator InitializeLevel() {
+        yield return new WaitForSeconds(0.1f);
+        if(gridManager.gridArray == null)
+            gridManager.InitiateGrid();
         dieController = FindObjectOfType<DieController>();
         if(dieController == null) {
             GameObject DieInstance = Instantiate(DiePrefab, StartingGridPosition, Quaternion.identity);
@@ -53,6 +55,13 @@ public class LevelManager : MonoBehaviour
     }
 
     public Tile GetTileInDirection(Vector3Int gridPosition, Vector3Int dir) {
+        // Check for walls
+        RaycastHit hit;
+        if(Physics.Raycast(gridPosition, dir, out hit, 1f, LayerMask.GetMask("Wall"))){
+            // return a Wall tile
+        }
+
+        // Get tile
         Vector3Int tilePos = gridPosition + dir;
         GridAnchor anchor = gridManager.GetGridAnchor(tilePos);
         if (anchor != null && anchor.tile != null) return anchor.tile;

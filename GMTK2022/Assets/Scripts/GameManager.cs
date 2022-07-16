@@ -130,6 +130,9 @@ public class GameManager : MonoBehaviour
         foreach (AsyncOperation op in ops) {
             while (!op.isDone) yield return null;
         }
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[0]));
+
         scenesLoading = null;
     }
 
@@ -150,7 +153,6 @@ public class GameManager : MonoBehaviour
 
         LoadScenes(sceneCollection.SceneNames);
         while (scenesLoading != null) yield return null;
-
         if(sceneCollection.MusicType != MusicTrackType.NoMusic) AudioManager.instance.PlayMusic(sceneCollection.MusicType);
 
         state = sceneCollection.State;
