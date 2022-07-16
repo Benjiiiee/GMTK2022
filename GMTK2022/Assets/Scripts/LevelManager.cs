@@ -47,13 +47,6 @@ public class LevelManager : MonoBehaviour
         isInputEnabled = true;
     }
 
-    private void Update() {
-        if(isInputEnabled && Input.GetKeyDown(KeyCode.RightArrow)) {
-            dieController.Shoot(Vector3Int.right);
-            isInputEnabled = false;
-        }
-    }
-
     public Tile GetTileInDirection(Vector3Int gridPosition, Vector3Int dir) {
         Vector3Int tilePos = gridPosition + dir;
 

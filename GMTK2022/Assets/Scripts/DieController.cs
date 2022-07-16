@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class DieController : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class DieController : MonoBehaviour
 
     public DieTypes DieType { get => CurrentDieType; set => ChangeDieType(value); }
     private DieTypes CurrentDieType;
-    public int FaceValue;
+    public int FaceValue { get => CurrentFaceValue; set => SetFaceValue(value); }
+    private int CurrentFaceValue;
     public int Steps;
     public Vector3Int Direction { get => CurrentDirection; set => SetDirection(value); }
     private Vector3Int CurrentDirection;
@@ -20,6 +22,7 @@ public class DieController : MonoBehaviour
     public GameObject D4Mesh;
     public GameObject D6Mesh;
     public GameObject D8Mesh;
+    private TextMeshProUGUI TXT_FaceValue;
 
     public DirectionArrow[] DirectionArrows;
 
@@ -49,12 +52,15 @@ public class DieController : MonoBehaviour
         switch (newType) {
             case DieTypes.D4:
                 D4Mesh.SetActive(true);
+                TXT_FaceValue = D4Mesh.GetComponentInChildren<TextMeshProUGUI>();
                 break;
             case DieTypes.D6:
                 D6Mesh.SetActive(true);
+                TXT_FaceValue = D6Mesh.GetComponentInChildren<TextMeshProUGUI>();
                 break;
             case DieTypes.D8:
                 D8Mesh.SetActive(true);
+                TXT_FaceValue = D8Mesh.GetComponentInChildren<TextMeshProUGUI>();
                 break;
             default:
                 break;
@@ -108,6 +114,7 @@ public class DieController : MonoBehaviour
 
     private IEnumerator Movement() {
         HideDirectionArrows();
+        HideFaceValue();
         Vector3Int LastGridPosition = GridPosition;
 
         // Begin movement
@@ -127,7 +134,39 @@ public class DieController : MonoBehaviour
         // Movement finished
         if(MoveCompleted != null) MoveCompleted();
         ShowDirectionArrows();
+        RollDie();
+        ShowFaceValue();
         MovementCoroutine = null;
+    }
+
+    private void RollDie() {
+        FaceValue = UnityEngine.Random.Range(1, GetMaxFaceValue());
+    }
+
+    private int GetMaxFaceValue() {
+        switch (DieType) {
+            case DieTypes.D4:
+                return 4;
+            case DieTypes.D6:
+                return 6;
+            case DieTypes.D8:
+                return 8;
+            default:
+                return 0;
+        }
+    }
+
+    private void SetFaceValue(int value) {
+        CurrentFaceValue = value;
+        if (TXT_FaceValue != null) TXT_FaceValue.text = value.ToString();
+    }
+
+    private void HideFaceValue() {
+        if (TXT_FaceValue != null) TXT_FaceValue.enabled = false;
+    }
+
+    private void ShowFaceValue() {
+        if (TXT_FaceValue != null) TXT_FaceValue.enabled = true;
     }
 }
 

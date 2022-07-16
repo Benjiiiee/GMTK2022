@@ -54,7 +54,7 @@ public class DirectionArrow : MonoBehaviour
         Vector3 worldMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosFar);
         Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
         RaycastHit hit;
-        Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit);
+        Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit, (worldMousePosFar - worldMousePosNear).magnitude, LayerMask.GetMask("UI"));
 
         return hit;
     }
