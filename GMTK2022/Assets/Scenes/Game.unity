@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridManager: {fileID: 655623570}
   DiePrefab: {fileID: 4145272831886853958, guid: 71d746f07a54a244499f45664ebf14ae, type: 3}
-  StartingGridPosition: {x: 0, y: 0, z: 0}
+  StartingGridPosition: {x: 0, y: 2, z: 0}
   EndingGridPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1532119334
 Transform:

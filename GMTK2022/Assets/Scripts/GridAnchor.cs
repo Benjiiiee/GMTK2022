@@ -9,6 +9,11 @@ public class GridAnchor : MonoBehaviour
 
     // TODO: Replace with actual tile generation logic
     private void Start() {
-        tile = new Tile(gridPosition, 1);
+        tile = new EmptyTile(gridPosition);
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 0.2f);
     }
 }
