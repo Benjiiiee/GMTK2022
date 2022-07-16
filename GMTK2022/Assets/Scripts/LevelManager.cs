@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void OnStepCompleted() {
-        if (gridManager.GetGridAnchor(dieController.GridPosition).tile is GoalTile) {
+        if (gridManager.GetGridAnchor(dieController.GridPosition).tile != null && gridManager.GetGridAnchor(dieController.GridPosition).tile is GoalTile) {
             dieController.StopMovement();
             GameManager.instance.GoToMainMenu();
         }
