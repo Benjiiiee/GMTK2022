@@ -35,6 +35,7 @@ public class DieController : MonoBehaviour
     private IEnumerator Movement() {
         Vector3Int LastGridPosition = GridPosition;
 
+        // Begin movement
         while (NextStep()) {
             float moveTimer = 0f;
             while(moveTimer < 1f) {
@@ -45,6 +46,8 @@ public class DieController : MonoBehaviour
             transform.position = GridPosition;
             LastGridPosition = GridPosition;
         }
+
+        // Movement finished
 
         MovementCoroutine = null;
     }

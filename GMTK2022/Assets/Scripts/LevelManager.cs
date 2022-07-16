@@ -11,8 +11,8 @@ public class LevelManager : MonoBehaviour
 
     private DieController dieController;
 
-    public Vector3 StartingGridPosition;
-    public Vector3 EndingGridPosition;
+    public Vector3Int StartingGridPosition;
+    public Vector3Int EndingGridPosition;
 
     private void Awake() {
         if (instance == null) instance = this;
@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
         gridManager.InitiateGrid();
         GameObject DieInstance = Instantiate(DiePrefab, StartingGridPosition, Quaternion.identity);
         dieController = DieInstance.GetComponent<DieController>();
+        dieController.GridPosition = StartingGridPosition;
     }
 
     private void Update() {
