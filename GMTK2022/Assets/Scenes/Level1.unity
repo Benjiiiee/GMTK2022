@@ -24,9 +24,9 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4061cafc8aea13347b22ca1c5e593673, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.3217308, g: 0.28144857, b: 0.36375695, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 53409a7e46e849d4ea7c0c408017f6c6, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 3cc7d4ac85daf674aa7a355d974b8d16, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 1, z: 4}
+  isSnappable: 0
 --- !u!4 &4216262
 Transform:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -225,121 +226,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
---- !u!1 &106257354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 106257356}
-  - component: {fileID: 106257355}
-  - component: {fileID: 106257357}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &106257355
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106257354}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 1
-  m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &106257356
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106257354}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &106257357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106257354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &113319335
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 1, z: 1}
+  isSnappable: 0
 --- !u!4 &113319337
 Transform:
   m_ObjectHideFlags: 0
@@ -415,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0, z: 0}
+  isSnappable: 0
 --- !u!4 &116604600
 Transform:
   m_ObjectHideFlags: 0
@@ -439,7 +327,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: bdbfde25b42ba3e488113d9cc1b3e951, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: bdbfde25b42ba3e488113d9cc1b3e951, type: 3}
       propertyPath: m_LocalPosition.x
@@ -516,7 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263fec9185944ad42999f70752135009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridManager: {fileID: 1133887168}
   DiePrefab: {fileID: 4145272831886853958, guid: 71d746f07a54a244499f45664ebf14ae, type: 3}
   StartingGridPosition: {x: 0, y: 0, z: 0}
   StartingFaceValue: 6
@@ -567,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 1, z: 2}
+  isSnappable: 0
 --- !u!4 &176578476
 Transform:
   m_ObjectHideFlags: 0
@@ -612,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 0, z: 2}
+  isSnappable: 0
 --- !u!4 &188048951
 Transform:
   m_ObjectHideFlags: 0
@@ -657,6 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 1, z: 1}
+  isSnappable: 0
 --- !u!4 &306681519
 Transform:
   m_ObjectHideFlags: 0
@@ -702,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 1, z: 0}
+  isSnappable: 0
 --- !u!4 &315672320
 Transform:
   m_ObjectHideFlags: 0
@@ -717,6 +608,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &348913857
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.935546
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.705553
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422618742360631297, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090840917349252321, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090840917349252321, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090840917349252321, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758312102739800106, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: m_Name
+      value: ART_prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
 --- !u!1 &398060945
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 2, z: 4}
+  isSnappable: 0
 --- !u!4 &398060947
 Transform:
   m_ObjectHideFlags: 0
@@ -771,7 +732,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -849,6 +810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 0, z: 2}
+  isSnappable: 0
 --- !u!4 &471568877
 Transform:
   m_ObjectHideFlags: 0
@@ -894,6 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 1, z: 1}
+  isSnappable: 0
 --- !u!4 &476362538
 Transform:
   m_ObjectHideFlags: 0
@@ -939,6 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 1, z: 0}
+  isSnappable: 0
 --- !u!4 &477285620
 Transform:
   m_ObjectHideFlags: 0
@@ -984,6 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 2, z: 3}
+  isSnappable: 0
 --- !u!4 &499493126
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,6 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 0, z: 0}
+  isSnappable: 0
 --- !u!4 &520287555
 Transform:
   m_ObjectHideFlags: 0
@@ -1074,6 +1040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 0, z: 2}
+  isSnappable: 0
 --- !u!4 &532830417
 Transform:
   m_ObjectHideFlags: 0
@@ -1119,6 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 1, z: 0}
+  isSnappable: 0
 --- !u!4 &622260881
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,6 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 0, z: 0}
+  isSnappable: 0
 --- !u!4 &624694246
 Transform:
   m_ObjectHideFlags: 0
@@ -1209,6 +1178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 2, z: 3}
+  isSnappable: 0
 --- !u!4 &672724463
 Transform:
   m_ObjectHideFlags: 0
@@ -1254,6 +1224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 1, z: 1}
+  isSnappable: 0
 --- !u!4 &672989486
 Transform:
   m_ObjectHideFlags: 0
@@ -1299,6 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 0, z: 4}
+  isSnappable: 0
 --- !u!4 &688149320
 Transform:
   m_ObjectHideFlags: 0
@@ -1344,6 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 1, z: 2}
+  isSnappable: 0
 --- !u!4 &703849646
 Transform:
   m_ObjectHideFlags: 0
@@ -1389,6 +1362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 1, z: 1}
+  isSnappable: 0
 --- !u!4 &704962626
 Transform:
   m_ObjectHideFlags: 0
@@ -1434,6 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 2, z: 1}
+  isSnappable: 0
 --- !u!4 &739769970
 Transform:
   m_ObjectHideFlags: 0
@@ -1479,6 +1454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 1, z: 4}
+  isSnappable: 0
 --- !u!4 &756583939
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,7 +1479,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1581,6 +1557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 0, z: 3}
+  isSnappable: 0
 --- !u!4 &799755323
 Transform:
   m_ObjectHideFlags: 0
@@ -1626,6 +1603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 2, z: 1}
+  isSnappable: 0
 --- !u!4 &821844106
 Transform:
   m_ObjectHideFlags: 0
@@ -1671,6 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 2, z: 4}
+  isSnappable: 0
 --- !u!4 &836599271
 Transform:
   m_ObjectHideFlags: 0
@@ -1716,6 +1695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 0, z: 1}
+  isSnappable: 0
 --- !u!4 &865119080
 Transform:
   m_ObjectHideFlags: 0
@@ -1761,6 +1741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 2, z: 2}
+  isSnappable: 0
 --- !u!4 &874686951
 Transform:
   m_ObjectHideFlags: 0
@@ -1806,6 +1787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 1, z: 2}
+  isSnappable: 0
 --- !u!4 &876595504
 Transform:
   m_ObjectHideFlags: 0
@@ -1851,6 +1833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 2, z: 2}
+  isSnappable: 0
 --- !u!4 &887674780
 Transform:
   m_ObjectHideFlags: 0
@@ -1896,6 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 1, z: 3}
+  isSnappable: 0
 --- !u!4 &889680036
 Transform:
   m_ObjectHideFlags: 0
@@ -1941,6 +1925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 0, z: 1}
+  isSnappable: 0
 --- !u!4 &897144095
 Transform:
   m_ObjectHideFlags: 0
@@ -1986,6 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 2, z: 4}
+  isSnappable: 0
 --- !u!4 &975799593
 Transform:
   m_ObjectHideFlags: 0
@@ -2031,6 +2017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 1, z: 3}
+  isSnappable: 0
 --- !u!4 &984825020
 Transform:
   m_ObjectHideFlags: 0
@@ -2055,7 +2042,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2133,6 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0, z: 2}
+  isSnappable: 0
 --- !u!4 &1010780309
 Transform:
   m_ObjectHideFlags: 0
@@ -2178,6 +2166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 2, z: 0}
+  isSnappable: 0
 --- !u!4 &1044728017
 Transform:
   m_ObjectHideFlags: 0
@@ -2223,6 +2212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 0, z: 1}
+  isSnappable: 0
 --- !u!4 &1050253404
 Transform:
   m_ObjectHideFlags: 0
@@ -2268,6 +2258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 1, z: 0}
+  isSnappable: 0
 --- !u!4 &1075098558
 Transform:
   m_ObjectHideFlags: 0
@@ -2313,6 +2304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 2, z: 1}
+  isSnappable: 0
 --- !u!4 &1121583952
 Transform:
   m_ObjectHideFlags: 0
@@ -2405,6 +2397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0, z: 3}
+  isSnappable: 0
 --- !u!4 &1155067982
 Transform:
   m_ObjectHideFlags: 0
@@ -2450,6 +2443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 0, z: 3}
+  isSnappable: 0
 --- !u!4 &1170509229
 Transform:
   m_ObjectHideFlags: 0
@@ -2495,6 +2489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 0, z: 3}
+  isSnappable: 0
 --- !u!4 &1180023219
 Transform:
   m_ObjectHideFlags: 0
@@ -2540,6 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 2, z: 3}
+  isSnappable: 0
 --- !u!4 &1192819275
 Transform:
   m_ObjectHideFlags: 0
@@ -2585,6 +2581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0, z: 1}
+  isSnappable: 0
 --- !u!4 &1196445858
 Transform:
   m_ObjectHideFlags: 0
@@ -2609,7 +2606,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2687,6 +2684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 0, z: 4}
+  isSnappable: 0
 --- !u!4 &1250681362
 Transform:
   m_ObjectHideFlags: 0
@@ -2732,6 +2730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 0, z: 4}
+  isSnappable: 0
 --- !u!4 &1290312843
 Transform:
   m_ObjectHideFlags: 0
@@ -2777,6 +2776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 0, z: 3}
+  isSnappable: 0
 --- !u!4 &1296059488
 Transform:
   m_ObjectHideFlags: 0
@@ -2801,7 +2801,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2879,6 +2879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 1, z: 4}
+  isSnappable: 0
 --- !u!4 &1372618844
 Transform:
   m_ObjectHideFlags: 0
@@ -2924,6 +2925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 1, z: 0}
+  isSnappable: 0
 --- !u!4 &1384423915
 Transform:
   m_ObjectHideFlags: 0
@@ -3026,6 +3028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0, z: 4}
+  isSnappable: 0
 --- !u!4 &1499888744
 Transform:
   m_ObjectHideFlags: 0
@@ -3071,6 +3074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 0, z: 0}
+  isSnappable: 0
 --- !u!4 &1519549413
 Transform:
   m_ObjectHideFlags: 0
@@ -3116,6 +3120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 2, z: 2}
+  isSnappable: 0
 --- !u!4 &1543145708
 Transform:
   m_ObjectHideFlags: 0
@@ -3161,6 +3166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 1, z: 3}
+  isSnappable: 0
 --- !u!4 &1543936135
 Transform:
   m_ObjectHideFlags: 0
@@ -3206,6 +3212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 1, z: 2}
+  isSnappable: 0
 --- !u!4 &1553313182
 Transform:
   m_ObjectHideFlags: 0
@@ -3251,6 +3258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 1, z: 3}
+  isSnappable: 0
 --- !u!4 &1570860170
 Transform:
   m_ObjectHideFlags: 0
@@ -3296,6 +3304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 2, z: 3}
+  isSnappable: 0
 --- !u!4 &1584288700
 Transform:
   m_ObjectHideFlags: 0
@@ -3341,6 +3350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 0, z: 4}
+  isSnappable: 0
 --- !u!4 &1584937611
 Transform:
   m_ObjectHideFlags: 0
@@ -3386,6 +3396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 2, z: 3}
+  isSnappable: 0
 --- !u!4 &1614931412
 Transform:
   m_ObjectHideFlags: 0
@@ -3431,6 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 1, z: 3}
+  isSnappable: 0
 --- !u!4 &1619066554
 Transform:
   m_ObjectHideFlags: 0
@@ -3476,6 +3488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 2, z: 4}
+  isSnappable: 0
 --- !u!4 &1646537113
 Transform:
   m_ObjectHideFlags: 0
@@ -3521,6 +3534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 1, z: 4}
+  isSnappable: 0
 --- !u!4 &1659664726
 Transform:
   m_ObjectHideFlags: 0
@@ -3566,6 +3580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 2, z: 1}
+  isSnappable: 0
 --- !u!4 &1670832986
 Transform:
   m_ObjectHideFlags: 0
@@ -3611,6 +3626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 1, z: 2}
+  isSnappable: 0
 --- !u!4 &1674522119
 Transform:
   m_ObjectHideFlags: 0
@@ -3656,6 +3672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 2, z: 4}
+  isSnappable: 0
 --- !u!4 &1777500521
 Transform:
   m_ObjectHideFlags: 0
@@ -3701,6 +3718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 2, z: 0}
+  isSnappable: 0
 --- !u!4 &1777510595
 Transform:
   m_ObjectHideFlags: 0
@@ -3746,6 +3764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 0, z: 2}
+  isSnappable: 0
 --- !u!4 &1794968367
 Transform:
   m_ObjectHideFlags: 0
@@ -3791,6 +3810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 2, z: 2}
+  isSnappable: 0
 --- !u!4 &1822727168
 Transform:
   m_ObjectHideFlags: 0
@@ -3836,6 +3856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 2, z: 0}
+  isSnappable: 0
 --- !u!4 &1823440793
 Transform:
   m_ObjectHideFlags: 0
@@ -3881,6 +3902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 2, z: 0}
+  isSnappable: 0
 --- !u!4 &1846678368
 Transform:
   m_ObjectHideFlags: 0
@@ -3926,6 +3948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 0, z: 0}
+  isSnappable: 0
 --- !u!4 &1907169465
 Transform:
   m_ObjectHideFlags: 0
@@ -3971,6 +3994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 0, z: 1}
+  isSnappable: 0
 --- !u!4 &1933893688
 Transform:
   m_ObjectHideFlags: 0
@@ -4016,6 +4040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 2, z: 2}
+  isSnappable: 0
 --- !u!4 &2007361065
 Transform:
   m_ObjectHideFlags: 0
@@ -4061,6 +4086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 2, z: 1}
+  isSnappable: 0
 --- !u!4 &2018463236
 Transform:
   m_ObjectHideFlags: 0
@@ -4085,7 +4111,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7073654651855183448, guid: 166ed901a838dc645b08f9475b8da487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4163,6 +4189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 1, y: 2, z: 0}
+  isSnappable: 0
 --- !u!4 &2103809172
 Transform:
   m_ObjectHideFlags: 0
@@ -4208,6 +4235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 4, y: 1, z: 4}
+  isSnappable: 0
 --- !u!4 &2125865393
 Transform:
   m_ObjectHideFlags: 0
