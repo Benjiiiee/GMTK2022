@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
         switch (state) {
             case GameStates.Initialize:
                 if (stateTransition == null) {
-                    stateTransition = GoToSceneCollection(FindSceneCollectionByName("TitleScreen"));
+                    stateTransition = GoToSceneCollection(FindSceneCollectionByName("Game"));
                     StartCoroutine(stateTransition);
                 }
                 break;
@@ -189,6 +189,13 @@ public class GameManager : MonoBehaviour
     public void LaunchGame() {
         if (stateTransition == null) {
             stateTransition = GoToSceneCollection(FindSceneCollectionByName("Game"));
+            StartCoroutine(stateTransition);
+        }
+    }
+
+    public void LaunchLevel1() {
+        if (stateTransition == null) {
+            stateTransition = GoToSceneCollection(FindSceneCollectionByName("Level1"));
             StartCoroutine(stateTransition);
         }
     }
