@@ -39,7 +39,7 @@ public class GridAnchor : MonoBehaviour
 
     // TODO: Replace with actual tile generation logic
     private void Start() {
-        tile = new EmptyTile(gridPosition);
+        
     }
 
     private void OnDrawGizmos() {

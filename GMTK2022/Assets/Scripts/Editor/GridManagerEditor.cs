@@ -14,5 +14,10 @@ public class GridManagerEditor : Editor
         {
             GridManager.instance.InitiateGrid();
         }
+
+        if (GUILayout.Button("Clear Grid")) {
+            GridManager.instance.ClearGrid();
+        }
+
     }
 }
