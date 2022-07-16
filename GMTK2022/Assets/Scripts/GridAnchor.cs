@@ -8,10 +8,13 @@ public class GridAnchor : MonoBehaviour
     public Vector3Int gridPosition;
 
     private GridManager gridManager;
+    public bool isSnappable = false;
 
     private void Awake()
     {
         gridManager = GridManager.instance;
+        //Add DropArea tag if snappable
+        gameObject.tag = isSnappable ? "DropArea" : "Untagged";
     }
 
     private void Update()
@@ -21,7 +24,7 @@ public class GridAnchor : MonoBehaviour
 
         // Check for tiles
         Collider[] colliders = Physics.OverlapSphere(gridPosition, 0.2f, LayerMask.GetMask("Grid"), QueryTriggerInteraction.Collide);
-        if(colliders.Length == 0) {
+        if(colliders.Length <= 1) {
             tile = null;
         }
         else for (int i = 0; i < colliders.Length; i++) {
@@ -32,6 +35,7 @@ public class GridAnchor : MonoBehaviour
                 tile = tc.tile;
             }
         }
+        Debug.Log(colliders.Length);
     }
 
     private void SnapToGrid()
@@ -49,8 +53,8 @@ public class GridAnchor : MonoBehaviour
         transform.localPosition = gridPosition;
     }
 
-    public Tile tile;
 
+    public Tile tile;
     // TODO: Replace with actual tile generation logic
     private void Start() {
         
