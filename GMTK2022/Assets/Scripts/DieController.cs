@@ -21,6 +21,8 @@ public class DieController : MonoBehaviour
     public GameObject D6Mesh;
     public GameObject D8Mesh;
 
+    public DirectionArrow[] DirectionArrows;
+
     private IEnumerator MovementCoroutine;
 
     public void Spawn(Vector3Int StartPosition, DieTypes StartingType, int StartingFaceValue) {
@@ -75,6 +77,18 @@ public class DieController : MonoBehaviour
         }
     }
 
+    private void HideDirectionArrows() {
+        foreach(DirectionArrow arrow in DirectionArrows) {
+            arrow.Hide();
+        }
+    }
+
+    private void ShowDirectionArrows() {
+        foreach (DirectionArrow arrow in DirectionArrows) {
+            arrow.Show();
+        }
+    }
+
     // Returns true if the die moved successfully; returns false if it stopped
     public bool NextStep() {
         // Look up the next tile in the current direction
@@ -93,6 +107,7 @@ public class DieController : MonoBehaviour
     }
 
     private IEnumerator Movement() {
+        HideDirectionArrows();
         Vector3Int LastGridPosition = GridPosition;
 
         // Begin movement
@@ -111,6 +126,7 @@ public class DieController : MonoBehaviour
 
         // Movement finished
         if(MoveCompleted != null) MoveCompleted();
+        ShowDirectionArrows();
         MovementCoroutine = null;
     }
 }
