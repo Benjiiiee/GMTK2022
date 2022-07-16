@@ -86,15 +86,15 @@ Material:
     - _FoamShadowDepth: 10
     - _FoamShadowStrength: 0.45
     - _IntersectionFoamBlend: 1
-    - _IntersectionFoamDepth: 0.53
+    - _IntersectionFoamDepth: 0.7
     - _IntersectionFoamScale: 0.85
     - _IntersectionFoamShadowProjection: 4.6
     - _IntersectionWaterBlend: 1
-    - _LightingHardness: 0
-    - _LightingSmoothness: 0.875
+    - _LightingHardness: 0.638
+    - _LightingSmoothness: 0.412
     - _NormalsStrength: 0.342
     - _PlanarReflectionFresnel: 2.5
-    - _PlanarReflectionStrength: 0.82
+    - _PlanarReflectionStrength: 0.325
     - _QueueControl: 1
     - _QueueOffset: 0
     - _RefractionStrength: 0.022
@@ -114,9 +114,9 @@ Material:
     - _WaterColorDepth: 2.02
     - _WaterColorHorizonDistance: 20
     m_Colors:
-    - _IntersectionFoamColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
+    - _IntersectionFoamColor: {r: 0.27224994, g: 0.40455464, b: 0.4339623, a: 1}
     - _IntersectionFoamMovement: {r: 0, g: 0, b: 0, a: 0}
-    - _IntersectionFoamSampling: {r: 1, g: 2.69, b: 0, a: 0}
+    - _IntersectionFoamSampling: {r: 1, g: 3, b: 0, a: 0}
     - _LightingDiffuseColor: {r: 0.058205754, g: 0.07361426, b: 0.11320752, a: 0}
     - _LightingSpecularColor: {r: 0.15908687, g: 0.45259246, b: 0.5188679, a: 0}
     - _NormalsMovement: {r: 0.04, g: 1.06, b: 0, a: 0}
@@ -126,11 +126,11 @@ Material:
     - _SurfaceFoamMovement: {r: 0.7, g: 0, b: 0.47, a: 0.01}
     - _SurfaceFoamSampling: {r: 0.117, g: 0, b: 0, a: 0}
     - _SurfaceFoamTilingAndOffset: {r: -1, g: -1, b: 0.57, a: 0.22}
-    - _WaterColorDeep: {r: 0.010960094, g: 0.014443844, b: 0.03433981, a: 1}
+    - _WaterColorDeep: {r: 0, g: 0, b: 0, a: 1}
     - _WaterColorHorizon: {r: 0.17030083, g: 0.23721677, b: 0.4056604, a: 1}
-    - _WaterColorShallow: {r: 0.022027416, g: 0.041065138, b: 0.103773594, a: 0.5019608}
+    - _WaterColorShallow: {r: 0.034457322, g: 0.02352941, b: 0.101960786, a: 0.5019608}
     - _WaterColorUnderwater: {r: 0.20387325, g: 0.3097529, b: 0.517647, a: 1}
     - _WaveColor: {r: 0.019090425, g: 0.06530243, b: 0.122641504, a: 0}
     - _WaveDirections: {r: 0, g: 0.64, b: 1, a: 0.33}
-    - _WaveVisuals: {r: 0.052, g: 14.8, b: 0.76, a: 0}
+    - _WaveVisuals: {r: 0.052, g: 14.8, b: 1, a: 0}
   m_BuildTextureStacks: []
