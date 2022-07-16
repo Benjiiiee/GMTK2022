@@ -18,8 +18,6 @@ public class LevelManager : MonoBehaviour
 
     public Vector3Int EndingGridPosition;
 
-    private bool isInputEnabled;
-
     private void Awake() {
         if (instance == null) instance = this;
         else Destroy(gameObject);
@@ -44,7 +42,6 @@ public class LevelManager : MonoBehaviour
             dieController = DieInstance.GetComponent<DieController>();
         }
         dieController.Spawn(StartingGridPosition, StartingDieType, StartingFaceValue);
-        isInputEnabled = true;
     }
 
     public Tile GetTileInDirection(Vector3Int gridPosition, Vector3Int dir) {
@@ -72,6 +69,5 @@ public class LevelManager : MonoBehaviour
     }
 
     private void OnMoveCompleted() {
-        isInputEnabled = true;
     }
 }
