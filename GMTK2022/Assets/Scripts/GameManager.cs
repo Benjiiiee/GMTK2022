@@ -193,6 +193,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LaunchLevel1() {
+        if (stateTransition == null) {
+            stateTransition = GoToSceneCollection(FindSceneCollectionByName("Level1"));
+            StartCoroutine(stateTransition);
+        }
+    }
+
     public void LaunchNewGame() {
         LaunchGame();
     }

@@ -9,4 +9,7 @@ public class MenuController : MonoBehaviour
         GameManager.instance.LaunchGame();
     }
 
+    public void OnLevel1ButtonPressed() {
+        GameManager.instance.LaunchLevel1();
+    }
 }
