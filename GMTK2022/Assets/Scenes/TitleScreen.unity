@@ -2742,6 +2742,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2452879177229445988, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8758312102739800106, guid: 661b6ac37171ad646b44995cfbc28421, type: 3}
       propertyPath: m_Name
       value: ART_prefab
