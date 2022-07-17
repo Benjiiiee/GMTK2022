@@ -25,6 +25,9 @@ public class victorySword : MonoBehaviour
     //camera shake
     public ShakeData MyShake;
 
+    //endgame
+    public GameObject endScreen;
+
 
     private void OnEnable() {
         GameManager.LoadingComplete += OnLoadingComplete;
@@ -39,12 +42,14 @@ public class victorySword : MonoBehaviour
     private void Awake() {
         splash = GetComponentInChildren<Splash>();
         splash.enabled = false;
+        endScreen = GameObject.Find("EndGame");
     }
 
     private void Start()
     {
         sword.GetComponent<Rigidbody>().isKinematic = true;
         playSound = true;
+        endScreen.SetActive(false);
     }
 
     private void OnLoadingComplete() {
@@ -114,7 +119,8 @@ public class victorySword : MonoBehaviour
     private IEnumerator EndingCoroutine() {
         splash.enabled = true;
         yield return new WaitForSeconds(5.0f);
-        if(AnimationComplete != null) AnimationComplete();
+        //if(AnimationComplete != null) AnimationComplete();
+        endScreen.SetActive(true);
     }
 
 }
