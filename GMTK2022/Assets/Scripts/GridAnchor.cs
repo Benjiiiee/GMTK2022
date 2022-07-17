@@ -48,7 +48,6 @@ public class GridAnchor : MonoBehaviour
                     }
             }
         }
-        Debug.Log(colliders.Length);
     }
 
     private void SnapToGrid()
