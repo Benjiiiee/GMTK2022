@@ -168,6 +168,7 @@ public class DieController : MonoBehaviour
         HideFaceValue();
         Vector3Int LastGridPosition = GridPosition;
         if (MoveStarted != null) MoveStarted();
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound(SoundName.DiceRolling);
 
         // Begin movement
         while (NextStep())

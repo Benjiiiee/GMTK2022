@@ -14,25 +14,32 @@ public class EmptyTile : Tile
         // If entering an EmptyTile from the side:
         if (die.Direction.x != 0 || die.Direction.z != 0) {
             // Check if the die can pay the movement cost:
-            if(die.Steps >= MovementCost) {
+            if (die.Steps >= MovementCost) {
                 // If it can, it pays the cost and moves into this tile
                 nextSteps = die.Steps - MovementCost;
                 nextGridPosition = GridPosition;
                 // If it has no steps left, change its direction to down
-                nextDirection = nextSteps == 0 ? new Vector3Int(0, -1, 0) : new Vector3Int(die.Direction.x, -1, die.Direction.z);
+                if(nextSteps == 0) {
+                    nextDirection = Vector3Int.down;
+                    nextSteps = MovementCost; // Falling is free!
+                }
+                else {
+                    nextDirection = new Vector3Int(die.Direction.x, -1, die.Direction.z);
+                }
                 return true;
             }
             else {
-                // If it can't pay the cost, check if it can fall instead
-                die.Direction = new Vector3Int(0, -1, 0);
-                return LevelManager.instance.GetTileInDirection(die.GridPosition, Vector3Int.down).EnterTile(die, out nextDirection, out nextSteps, out nextGridPosition);
+                nextSteps = die.Steps;
+                nextGridPosition = die.GridPosition;
+                nextDirection = die.Direction;
+                return false;
             }
         }
         // If entering an EmptyTile from the top:
         else {
             // Fall
             nextDirection = die.Direction;
-            nextSteps = die.Steps;
+            nextSteps = die.Steps + MovementCost; // Falling is free!
             nextGridPosition = GridPosition;
             return true;
         }
