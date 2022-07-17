@@ -13,7 +13,7 @@ public class GridAnchor : MonoBehaviour
 
     private void Awake()
     {
-        gridManager = GridManager.instance;
+        //gridManager = GridManager.instance;
         //Add DropArea tag if snappable
         gameObject.tag = isSnappable ? "DropArea" : "Untagged";
         cube = GetComponentInChildren<MeshRenderer>();
@@ -21,6 +21,7 @@ public class GridAnchor : MonoBehaviour
 
     private void Update()
     {
+        if(gridManager != null){ gridManager = GridManager.instance; }//trying
         SnapToGrid();
         if(gridManager != null) gridManager.SetGridAnchor(gridPosition, this);
 
