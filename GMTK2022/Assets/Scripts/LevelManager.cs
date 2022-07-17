@@ -59,12 +59,20 @@ public class LevelManager : MonoBehaviour
             // return a Wall tile
             return new WallTile(tilePos);
         }
-        Debug.DrawLine(gridPosition, tilePos, Color.green, 1.0f);
+        //Debug.DrawLine(gridPosition, tilePos, Color.green, 1.0f);
 
         // Get tile
         GridAnchor anchor = GridManager.instance.GetGridAnchor(tilePos);
         if (anchor != null && anchor.tile != null) return anchor.tile;
-        else return new EmptyTile(tilePos);
+        
+        else {
+            // If no tile exists at the desired position, check if there is a descending slope to stick to
+            anchor = GridManager.instance.GetGridAnchor(tilePos + Vector3Int.down);
+            if(anchor != null && anchor.tile != null && anchor.tile is SlopeTile) {
+                return anchor.tile;
+            }
+            return new EmptyTile(tilePos);
+        }
     }
 
     private void OnStepCompleted() {
