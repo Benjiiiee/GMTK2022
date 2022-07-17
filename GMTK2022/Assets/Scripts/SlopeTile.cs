@@ -20,19 +20,19 @@ public class SlopeTile : Tile
 
         // It costs 1 to enter the slope.
         if(die.Steps >= MovementCost) {
-            nextGridPosition = GridPosition;
+            nextGridPosition = GridPosition + Vector3Int.up;
             if (descending) {
                 // If descending, gain the MovementCost instead of paying it
                 nextSteps = die.Steps + MovementCost;
                 // Direction is unchanged
-                nextDirection = DescentDirection;
+                nextDirection = DescentDirection + Vector3Int.down;
             }
             else {
                 // If rising, pay the MovementCost twice
                 nextSteps = Math.Max(die.Steps - 2 * MovementCost, 0);
                 // If no more steps, direction is flipped and steps are increased (so the die can roll down the slope)
                 if(nextSteps == 0) {
-                    nextDirection = DescentDirection;
+                    nextDirection = DescentDirection + Vector3Int.down;
                     nextSteps += MovementCost;
                 }
                 // If steps remain, the die can climb up

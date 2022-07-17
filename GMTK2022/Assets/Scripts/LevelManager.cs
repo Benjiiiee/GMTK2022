@@ -18,18 +18,22 @@ public class LevelManager : MonoBehaviour
 
     public Vector3Int EndingGridPosition;
 
+    private Vector3Int LastValidGridPosition;
+
     private void Awake() {
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }
 
     private void OnEnable() {
+        DieController.MoveStarted += OnMoveStarted;
         DieController.StepCompleted += OnStepCompleted;
         DieController.MoveCompleted += OnMoveCompleted;
         GameManager.LoadingComplete += OnLoadingCompleted;
     }
 
     private void OnDisable() {
+        DieController.MoveStarted -= OnMoveStarted;
         DieController.StepCompleted -= OnStepCompleted;
         DieController.MoveCompleted -= OnMoveCompleted;
         GameManager.LoadingComplete -= OnLoadingCompleted;
@@ -74,15 +78,36 @@ public class LevelManager : MonoBehaviour
             return new EmptyTile(tilePos);
         }
     }
+    private void OnMoveStarted() {
+        LastValidGridPosition = dieController.GridPosition;
+    }
 
     private void OnStepCompleted() {
-        if (GridManager.instance.GetGridAnchor(dieController.GridPosition).tile != null && GridManager.instance.GetGridAnchor(dieController.GridPosition).tile is GoalTile) {
+        // If the die is on a goal tile, win:
+        GridAnchor anchor = GridManager.instance.GetGridAnchor(dieController.GridPosition);
+        if (anchor != null && anchor.tile != null && anchor.tile is GoalTile) {
             dieController.StopMovement();
             GameManager.instance.GoToMainMenu();
+        }
+
+        // If the die falls in the water (grid level Y<0), bring it back to the last position:
+        if(dieController.GridPosition.y < 0) {
+            Respawn();
         }
     }
 
     private void OnMoveCompleted() {
+    }
+
+    private void Respawn() {
+        StartCoroutine(RespawnCoroutine());
+    }
+
+    private IEnumerator RespawnCoroutine() {
+        dieController.StopMovement();
+        yield return new WaitForSeconds(1f);
+        dieController.Teleport(LastValidGridPosition);
+        dieController.FinishMovement();
     }
 
     private void OnDestroy() {

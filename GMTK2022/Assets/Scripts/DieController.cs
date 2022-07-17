@@ -6,6 +6,7 @@ using TMPro;
 
 public class DieController : MonoBehaviour
 {
+    public static Action MoveStarted;
     public static Action StepCompleted;
     public static Action MoveCompleted;
     public static Action<DieTypes, int> StoreDie;
@@ -49,6 +50,12 @@ public class DieController : MonoBehaviour
             if (StartingType != DieTypes.D8) StoreDie(DieTypes.D8, 8);
         }
     }
+
+    public void Teleport(Vector3Int TargetPosition) {
+        GridPosition = TargetPosition;
+        transform.position = TargetPosition;
+    }
+
     private void ChangeDieType(DieTypes newType, int faceValue) {
         switch (DieType) {
             case DieTypes.D4:
@@ -137,6 +144,7 @@ public class DieController : MonoBehaviour
         HideDirectionArrows();
         HideFaceValue();
         Vector3Int LastGridPosition = GridPosition;
+        if (MoveStarted != null) MoveStarted();
 
         // Begin movement
         while (NextStep()) {
@@ -153,18 +161,22 @@ public class DieController : MonoBehaviour
         }
 
         // Movement finished
-        if(MoveCompleted != null) MoveCompleted();
-        ShowDirectionArrows();
-        RollDie();
-        ShowFaceValue();
+        FinishMovement();
+        if (MoveCompleted != null) MoveCompleted();
         MovementCoroutine = null;
     }
 
-    private void RollDie() {
+    public void FinishMovement() {
+        RollDie();
+        ShowDirectionArrows();
+        ShowFaceValue();
+    }
+
+    public void RollDie() {
         FaceValue = UnityEngine.Random.Range(1, GetMaxFaceValue());
     }
 
-    private int GetMaxFaceValue() {
+    public int GetMaxFaceValue() {
         switch (DieType) {
             case DieTypes.D4:
                 return 4;
@@ -191,7 +203,10 @@ public class DieController : MonoBehaviour
     }
 
     public void StopMovement() {
-        if (MovementCoroutine != null) StopCoroutine(MovementCoroutine);
+        if (MovementCoroutine != null) {
+            StopCoroutine(MovementCoroutine);
+            MovementCoroutine = null;
+        }
     }
 }
 
