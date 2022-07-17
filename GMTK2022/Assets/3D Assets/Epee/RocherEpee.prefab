@@ -104,6 +104,7 @@ MonoBehaviour:
   changing: 0
   playSound: 0
   sword: {fileID: 6789721288270109348}
+  MyShake: {fileID: 11400000, guid: e9cc269b167408d48b6809f938c5e45b, type: 2}
 --- !u!1 &4040258502553762117
 GameObject:
   m_ObjectHideFlags: 0
