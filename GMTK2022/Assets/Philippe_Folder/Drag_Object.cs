@@ -48,8 +48,18 @@ public class Drag_Object : MonoBehaviour
     {
         Vector3 mousePoint = Input.mousePosition;
 
-        mousePoint.z = mZCoord;
-        return Camera.main.ScreenToWorldPoint(mousePoint);
+        mousePoint.z = 1;
+        Vector3 point1 = Camera.main.ScreenToWorldPoint(mousePoint);
+        mousePoint.z = 2;
+        Vector3 point2 = Camera.main.ScreenToWorldPoint(mousePoint);
+        Vector3 line = point2 - point1;
+
+        Vector3 intersection;
+        if (LinePlaneIntersection(out intersection, point1, line, Vector3.up, new Vector3(0, 3, 0))){
+            return intersection;
+        }
+
+        return Vector3.zero;
 
     }
 
@@ -132,6 +142,31 @@ public class Drag_Object : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public static bool LinePlaneIntersection(out Vector3 intersection, Vector3 linePoint, Vector3 lineVec, Vector3 planeNormal, Vector3 planePoint) {
+        float length;
+        float dotNumerator;
+        float dotDenominator;
+        Vector3 vector;
+        intersection = Vector3.zero;
+
+        //calculate the distance between the linePoint and the line-plane intersection point
+        dotNumerator = Vector3.Dot((planePoint - linePoint), planeNormal);
+        dotDenominator = Vector3.Dot(lineVec, planeNormal);
+
+        if (dotDenominator != 0.0f) {
+            length = dotNumerator / dotDenominator;
+
+            vector = lineVec.normalized * length;
+
+            intersection = linePoint + vector;
+
+            return true;
+        }
+
+        else
+            return false;
     }
 
 }
