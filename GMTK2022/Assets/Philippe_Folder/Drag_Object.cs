@@ -75,7 +75,7 @@ public class Drag_Object : MonoBehaviour
             var rayOrigin = Camera.main.transform.position;
             var rayDirection = GetMouseWorldPos() - Camera.main.transform.position;
             RaycastHit hitInfo;
-            if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
+            if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo, LayerMask.GetMask("DropArea")))
             {
                 if (hitInfo.transform.tag == destinationTag)
                 {
@@ -119,7 +119,7 @@ public class Drag_Object : MonoBehaviour
 
     public bool CheckIfFree(RaycastHit hit)
     {
-        GridAnchor anchor = hit.collider.gameObject.GetComponent<GridAnchor>();
+        GridAnchor anchor = hit.collider.gameObject.GetComponentInParent<GridAnchor>();
         if (anchor != null)
         {
             if (anchor.tile == null)
