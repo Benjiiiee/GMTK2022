@@ -19,6 +19,14 @@ public class Drag_Object : MonoBehaviour
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffSet = gameObject.transform.position - GetMouseWorldPos();
             transform.GetComponent<Collider>().enabled = false;
+            Collider[] colliders = transform.GetComponentsInChildren<Collider>();
+            foreach (Collider col in colliders)
+            {
+                if(col != null)
+                {
+                    col.enabled = false;
+                }
+            }
             Cursor.visible = false;
             lastLocation = transform.position;
         }
@@ -80,6 +88,14 @@ public class Drag_Object : MonoBehaviour
             }
 
             transform.GetComponent<Collider>().enabled = true;
+            Collider[] colliders = transform.GetComponentsInChildren<Collider>();
+            foreach (Collider col in colliders)
+            {
+                if (col != null)
+                {
+                    col.enabled = true;
+                }
+            }
             Cursor.visible = true;
         }
     }
