@@ -57,7 +57,7 @@ public class Drag_Object : MonoBehaviour
     {
         if (isDraggable && isDiceMoving == false)
         {
-            transform.position = new Vector3(GetMouseWorldPos().x, 0, GetMouseWorldPos().z)  /*+ mOffSet*/;
+            transform.position = new Vector3(GetMouseWorldPos().x, 3, GetMouseWorldPos().z)  /*+ mOffSet*/;
             if (Input.GetMouseButtonDown(1))
             {
                 transform.rotation = Quaternion.Euler(new Vector3(
