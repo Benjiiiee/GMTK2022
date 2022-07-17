@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2549979, g: 0.24156246, b: 0.2634637, a: 1}
+  m_IndirectSpecularColor: {r: 0.2549976, g: 0.24156219, b: 0.26346356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -317,6 +317,50 @@ MonoBehaviour:
     MusicType: 0
     State: 5
   state: 0
+--- !u!1 &489482453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489482455}
+  - component: {fileID: 489482454}
+  m_Layer: 0
+  m_Name: ScoreKeeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &489482454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489482453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883046c3d83686841b7e212e1d1d8b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &489482455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489482453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 593.09503, y: 156.44067, z: 0.8119507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &559383684
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +808,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Music: []
-  Sounds: []
+  Sounds:
+  - Name: 1
+    Clip: {fileID: 8300000, guid: 8d7a5e18634e59445ae41a47c16f0fc5, type: 3}
+    Volume: 1
+    Pitch: 0
+  - Name: 0
+    Clip: {fileID: 8300000, guid: 0a221fc71cee25d45add549461ef0849, type: 3}
+    Volume: 1
+    Pitch: 0
+  - Name: 2
+    Clip: {fileID: 8300000, guid: de7f47ac16261674b9cc8f605f272047, type: 3}
+    Volume: 1
+    Pitch: 0
+  - Name: 1
+    Clip: {fileID: 8300000, guid: 8d7a5e18634e59445ae41a47c16f0fc5, type: 3}
+    Volume: 1
+    Pitch: 0
   EffectsPool: {fileID: 692849063}
   musicController: {fileID: 718461832}
 --- !u!1 &968903431
