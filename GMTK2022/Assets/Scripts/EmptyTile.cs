@@ -21,7 +21,7 @@ public class EmptyTile : Tile
                 // If it has no steps left, change its direction to down
                 if(nextSteps == 0) {
                     nextDirection = Vector3Int.down;
-                    nextSteps = MovementCost; // Falling is free!
+                    nextSteps = Math.Max(die.Steps, MovementCost); // Falling is free!
                 }
                 else {
                     nextDirection = new Vector3Int(die.Direction.x, -1, die.Direction.z);
@@ -39,7 +39,7 @@ public class EmptyTile : Tile
         else {
             // Fall
             nextDirection = die.Direction;
-            nextSteps = die.Steps + MovementCost; // Falling is free!
+            nextSteps = Math.Max(die.Steps, MovementCost); // Falling is free!
             nextGridPosition = GridPosition;
             return true;
         }
