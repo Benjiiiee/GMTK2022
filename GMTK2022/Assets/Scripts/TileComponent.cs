@@ -19,6 +19,10 @@ public class TileComponent : MonoBehaviour
         tiles.Add(TileType.CornerPosXNegZ, new CornerTile(Vector3Int.zero, 1, CornerTypes.PosXNegZ));
         tiles.Add(TileType.CornerNegXPosZ, new CornerTile(Vector3Int.zero, 1, CornerTypes.NegXPosZ));
         tiles.Add(TileType.CornerNegXNegZ, new CornerTile(Vector3Int.zero, 1, CornerTypes.NegXNegZ));
+        tiles.Add(TileType.SlopeDescentPosX, new SlopeTile(Vector3Int.zero, Vector3Int.right));
+        tiles.Add(TileType.SlopeDescentNegX, new SlopeTile(Vector3Int.zero, Vector3Int.left));
+        tiles.Add(TileType.SlopeDescentPosZ, new SlopeTile(Vector3Int.zero, Vector3Int.forward));
+        tiles.Add(TileType.SlopeDescentNegZ, new SlopeTile(Vector3Int.zero, Vector3Int.back));
     }
 }
 
@@ -31,5 +35,9 @@ public enum TileType
     CornerPosXPosZ,
     CornerPosXNegZ,
     CornerNegXPosZ,
-    CornerNegXNegZ
+    CornerNegXNegZ,
+    SlopeDescentPosX,
+    SlopeDescentNegX,
+    SlopeDescentPosZ,
+    SlopeDescentNegZ
 }
