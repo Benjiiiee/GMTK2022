@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     private void Start() {
         loadedScenes = new List<string>();
         keepLoaded = new List<string>();
-        //keepLoaded.Add("Persistent");
     }
 
     private void OnEnable() {
@@ -47,6 +46,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         ShowSettings += OnShowSettings;
         HideSettings += OnHideSettings;
+        LevelManager.LevelCompleted += LoadNextLevel;
     }
 
     private void OnDisable() {
@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
         ShowSettings -= OnShowSettings;
         HideSettings -= OnHideSettings;
+        LevelManager.LevelCompleted -= LoadNextLevel;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
@@ -187,14 +188,6 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(stateTransition);
                 }
                 break;
-            case GameStates.Game:
-                if (Input.GetButtonDown("Pause"))
-                    Pause();
-                break;
-            case GameStates.GamePaused:
-                if (Input.GetButtonDown("Pause"))
-                    Resume();
-                break;
             default:
                 break;
         }
@@ -202,7 +195,7 @@ public class GameManager : MonoBehaviour
 
     public void LaunchGame() {
         if (stateTransition == null) {
-            stateTransition = GoToSceneCollection(FindSceneCollectionByName("Game"));
+            stateTransition = GoToSceneCollection(FindSceneCollectionByName("Level0"));
             StartCoroutine(stateTransition);
         }
     }
@@ -218,12 +211,21 @@ public class GameManager : MonoBehaviour
         LaunchGame();
     }
 
-    public void Pause() {
+    public void LoadNextLevel() {
+        if (state == GameStates.Level0) {
+            if (stateTransition == null) {
+                stateTransition = GoToSceneCollection(FindSceneCollectionByName("Level1"));
+                StartCoroutine(stateTransition);
+            }
+        }
+        else if (state == GameStates.Level1) {
+            if (stateTransition == null) {
+                stateTransition = GoToSceneCollection(FindSceneCollectionByName("TitleScreen"));
+                StartCoroutine(stateTransition);
+            }
+        }
     }
 
-    public void Resume() {
-
-    }
 
     public void GoToMainMenu() {
         if (stateTransition == null) {
@@ -248,7 +250,9 @@ public enum GameStates
     GamePaused,
     GameSettings,
     Transition,
-    Game
+    Game,
+    Level0,
+    Level1
 }
 
 [Serializable]

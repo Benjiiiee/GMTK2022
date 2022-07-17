@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+
+    public static Action LevelCompleted;
 
 //    public GridManager gridManager;
     public GameObject DiePrefab;
@@ -87,7 +90,7 @@ public class LevelManager : MonoBehaviour
         GridAnchor anchor = GridManager.instance.GetGridAnchor(dieController.GridPosition);
         if (anchor != null && anchor.tile != null && anchor.tile is GoalTile) {
             dieController.StopMovement();
-            GameManager.instance.GoToMainMenu();
+            if (LevelCompleted != null) LevelCompleted();
         }
 
         // If the die falls in the water (grid level Y<0), bring it back to the last position:

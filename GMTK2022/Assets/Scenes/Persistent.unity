@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2549976, g: 0.24156219, b: 0.26346356, a: 1}
+  m_IndirectSpecularColor: {r: 0.2549979, g: 0.24156246, b: 0.2634637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -417,16 +417,23 @@ MonoBehaviour:
     ShowCursor: 1
     MusicType: 0
     State: 1
-  - CollectionName: Game
+  - CollectionName: Level0
     SceneNames:
-    - Game
+    - Level0
     - GameUI
     ShowCursor: 0
     MusicType: 0
-    State: 5
+    State: 6
   - CollectionName: Level1
     SceneNames:
     - Level1
+    - GameUI
+    ShowCursor: 0
+    MusicType: 0
+    State: 7
+  - CollectionName: Game
+    SceneNames:
+    - Game
     - GameUI
     ShowCursor: 0
     MusicType: 0
