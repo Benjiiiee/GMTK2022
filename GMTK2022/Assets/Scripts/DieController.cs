@@ -187,9 +187,7 @@ public class DieController : MonoBehaviour
         }
 
         // Movement finished
-        MovementCoroutine = null;
         FinishMovement();
-        if (MoveCompleted != null) MoveCompleted();
         MovementCoroutine = null;
     }
     public void FinishMovement() {
@@ -200,6 +198,7 @@ public class DieController : MonoBehaviour
         {
             animator.SetTrigger("isidle");
         }
+        if (MoveCompleted != null) MoveCompleted();
         MovementCoroutine = null;
     }
 
