@@ -9,12 +9,14 @@ public class GridAnchor : MonoBehaviour
 
     private GridManager gridManager;
     public bool isSnappable = false;
+    public MeshRenderer cube;
 
     private void Awake()
     {
         gridManager = GridManager.instance;
         //Add DropArea tag if snappable
         gameObject.tag = isSnappable ? "DropArea" : "Untagged";
+        cube = GetComponentInChildren<MeshRenderer>();
     }
 
     private void Update()
@@ -26,6 +28,13 @@ public class GridAnchor : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(gridPosition, 0.2f, LayerMask.GetMask("Grid"));
         if(colliders.Length < 1) {
             tile = null;
+            if(isSnappable == true)
+            {
+                if(cube != null)
+                {
+                    cube.enabled = true;
+                }
+            }
         }
         else for (int i = 0; i < colliders.Length; i++) {
             TileComponent tc = colliders[i].GetComponent<TileComponent>();
@@ -33,8 +42,13 @@ public class GridAnchor : MonoBehaviour
                 tc.tile.GridPosition = gridPosition;
                 tc.transform.position = gridPosition;
                 tile = tc.tile;
+                if(isSnappable && cube != null)
+                    {
+                        cube.enabled = false;
+                    }
             }
         }
+        Debug.Log(colliders.Length);
     }
 
     private void SnapToGrid()
