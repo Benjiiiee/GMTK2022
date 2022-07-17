@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FirstGearGames.SmoothCameraShaker;
-
+using System;
 
 public class victorySword : MonoBehaviour
 {
+    public static Action AnimationComplete;
 
     public int victoryPoints;
     public GameObject startPos;
@@ -19,15 +20,45 @@ public class victorySword : MonoBehaviour
 
     public GameObject sword;
 
+    private Splash splash;
+
     //camera shake
     public ShakeData MyShake;
 
+
+    private void OnEnable() {
+        GameManager.LoadingComplete += OnLoadingComplete;
+        LevelManager.LevelCompleted += GainVictoryPoint;
+    }
+
+    private void OnDisable() {
+        GameManager.LoadingComplete -= OnLoadingComplete;
+        LevelManager.LevelCompleted -= GainVictoryPoint;
+    }
+
+    private void Awake() {
+        splash = GetComponentInChildren<Splash>();
+        splash.enabled = false;
+    }
 
     private void Start()
     {
         sword.GetComponent<Rigidbody>().isKinematic = true;
         playSound = true;
     }
+
+    private void OnLoadingComplete() {
+        if (GameManager.instance.state == GameStates.Level1) {
+            victoryPoints = 1;
+            sword.transform.position = stepPos.transform.position;
+        }
+    }
+
+    private void GainVictoryPoint() {
+        victoryPoints++;
+        changing = true;
+    }
+
     private void Update()
     {
         if (victoryPoints == 1 && changing == true)
@@ -48,6 +79,7 @@ public class victorySword : MonoBehaviour
                 elapsedTime = 0;
                 percentageComplete = 0;
                 playSound = true;
+                if (AnimationComplete != null) AnimationComplete();
             }
         }
 
@@ -74,9 +106,15 @@ public class victorySword : MonoBehaviour
                 percentageComplete = 0;
                 sword.GetComponent<Rigidbody>().isKinematic = false;
                 playSound = true;
+                StartCoroutine(EndingCoroutine());
             }
         }
     }
 
+    private IEnumerator EndingCoroutine() {
+        splash.enabled = true;
+        yield return new WaitForSeconds(5.0f);
+        if(AnimationComplete != null) AnimationComplete();
+    }
 
 }

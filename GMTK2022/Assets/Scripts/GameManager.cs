@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         ShowSettings += OnShowSettings;
         HideSettings += OnHideSettings;
-        LevelManager.LevelCompleted += LoadNextLevel;
+        victorySword.AnimationComplete += LoadNextLevel;
     }
 
     private void OnDisable() {
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
         ShowSettings -= OnShowSettings;
         HideSettings -= OnHideSettings;
-        LevelManager.LevelCompleted -= LoadNextLevel;
+        victorySword.AnimationComplete -= LoadNextLevel;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
@@ -169,10 +169,10 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("ACTIVE SCENE SET: " + sceneCollection.SceneNames[0]);
 
-        if (LoadingComplete != null) LoadingComplete();
-
         if (sceneCollection.MusicType != MusicTrackType.NoMusic) AudioManager.instance.PlayMusic(sceneCollection.MusicType);
         state = sceneCollection.State;
+
+        if (LoadingComplete != null) LoadingComplete();
 
         if (HideSettings != null) HideSettings();
         if (FadeIn != null) FadeIn();
