@@ -70,8 +70,4 @@ public class GridManager : MonoBehaviour
             gridArray = null;
         }
     }
-
-    private void Update() {
-        Debug.Log("Grid Anchors: " + gridArray.Length);
-    }
 }

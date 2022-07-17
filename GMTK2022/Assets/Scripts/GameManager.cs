@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public static Action WhiteIn;
     public static Action WhiteOut;
 
+    public static Action LoadingComplete;
+
     public SceneCollection[] SceneCollections;
 
     public GameStates state;
@@ -35,10 +37,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        HideCursor();
         loadedScenes = new List<string>();
         keepLoaded = new List<string>();
-        keepLoaded.Add("Persistent");
+        //keepLoaded.Add("Persistent");
     }
 
     private void OnEnable() {
@@ -113,25 +114,28 @@ public class GameManager : MonoBehaviour
                 if (s.Equals(sceneName)) alreadyLoaded = true;
             }
             if (!alreadyLoaded) {
+                Debug.Log("LOADING: " + sceneName);
                 AsyncOperation op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
                 op.allowSceneActivation = false;
                 ops.Add(op);
                 //Wait for each scene to finish loading
-                while (op.progress < 0.9f) yield return null;
+                //while (op.progress < 0.9f) yield return null;
             }
         }
 
+        Debug.Log("ACTIVATING...");
         //Activate every loading scene
         foreach (AsyncOperation op in ops) {
             op.allowSceneActivation = true;
         }
+
 
         //Wait for each scene to activate
         foreach (AsyncOperation op in ops) {
             while (!op.isDone) yield return null;
         }
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[0]));
+        Debug.Log("ACTIVATION COMPLETE");
 
         scenesLoading = null;
     }
@@ -144,23 +148,33 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator GoToSceneCollection(SceneCollection sceneCollection) {
+        Debug.Log("GO TO COLLECTION " + sceneCollection.CollectionName);
         if (SceneManager.sceneCount > 1) {
+            Debug.Log("UNLOADING...");
             if (FadeOut != null) FadeOut();
             yield return new WaitForSecondsRealtime(2.0f);
             UnloadAllScenes();
             while (scenesLoading != null) yield return null;
+            Debug.Log("UNLOADING COMPLETE");
         }
 
+        Debug.Log("LOADING SCENES...");
         LoadScenes(sceneCollection.SceneNames);
         while (scenesLoading != null) yield return null;
-        if(sceneCollection.MusicType != MusicTrackType.NoMusic) AudioManager.instance.PlayMusic(sceneCollection.MusicType);
+        Debug.Log("LOADING COMPLETE");
 
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneCollection.SceneNames[0]));
+
+        Debug.Log("ACTIVE SCENE SET: " + sceneCollection.SceneNames[0]);
+
+        if (LoadingComplete != null) LoadingComplete();
+
+        if (sceneCollection.MusicType != MusicTrackType.NoMusic) AudioManager.instance.PlayMusic(sceneCollection.MusicType);
         state = sceneCollection.State;
 
         if (HideSettings != null) HideSettings();
         if (FadeIn != null) FadeIn();
-
-        ShowCursor();
 
         stateTransition = null;
     }
@@ -169,7 +183,7 @@ public class GameManager : MonoBehaviour
         switch (state) {
             case GameStates.Initialize:
                 if (stateTransition == null) {
-                    stateTransition = GoToSceneCollection(FindSceneCollectionByName("Game"));
+                    stateTransition = GoToSceneCollection(FindSceneCollectionByName("TitleScreen"));
                     StartCoroutine(stateTransition);
                 }
                 break;
@@ -224,16 +238,6 @@ public class GameManager : MonoBehaviour
 
     private void OnHideSettings() {
 
-    }
-
-    public void ShowCursor() {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void HideCursor() {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 }
 

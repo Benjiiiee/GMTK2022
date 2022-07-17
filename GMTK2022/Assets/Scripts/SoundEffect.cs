@@ -21,5 +21,8 @@ public class SoundEffect {
 }
 
 public enum SoundName {
-
+    DiceRolling,
+    SwordRising,
+    SwordSplash,
+    SeaAmbiance
 }

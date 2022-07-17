@@ -100,8 +100,10 @@ MonoBehaviour:
   endPos: {fileID: 4040258502553762117}
   desiredDuration: 3
   elapsedTime: 0
+  percentageComplete: 0
+  changing: 0
+  playSound: 0
   sword: {fileID: 6789721288270109348}
-  stuff: 0
 --- !u!1 &4040258502553762117
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7603858432316353560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4203999, y: 10.26, z: -0.013600111}
+  m_LocalPosition: {x: -0.4203999, y: 9.43, z: -0.013600111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
