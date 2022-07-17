@@ -26,14 +26,16 @@ public class LevelManager : MonoBehaviour
     private void OnEnable() {
         DieController.StepCompleted += OnStepCompleted;
         DieController.MoveCompleted += OnMoveCompleted;
+        GameManager.LoadingComplete += OnLoadingCompleted;
     }
 
     private void OnDisable() {
         DieController.StepCompleted -= OnStepCompleted;
         DieController.MoveCompleted -= OnMoveCompleted;
+        GameManager.LoadingComplete -= OnLoadingCompleted;
     }
 
-    private void Start() {
+    private void OnLoadingCompleted() {
         StartCoroutine(InitializeLevel());
     }
 

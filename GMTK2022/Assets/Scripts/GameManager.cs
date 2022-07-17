@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public static Action WhiteIn;
     public static Action WhiteOut;
 
+    public static Action LoadingComplete;
+
     public SceneCollection[] SceneCollections;
 
     public GameStates state;
@@ -127,15 +129,13 @@ public class GameManager : MonoBehaviour
             op.allowSceneActivation = true;
         }
 
+
         //Wait for each scene to activate
         foreach (AsyncOperation op in ops) {
             while (!op.isDone) yield return null;
         }
+
         Debug.Log("ACTIVATION COMPLETE");
-
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[0]));
-
-        Debug.Log("ACTIVE SCENE SET: " + sceneNames[0]);
 
         scenesLoading = null;
     }
@@ -163,7 +163,14 @@ public class GameManager : MonoBehaviour
         while (scenesLoading != null) yield return null;
         Debug.Log("LOADING COMPLETE");
 
-        if(sceneCollection.MusicType != MusicTrackType.NoMusic) AudioManager.instance.PlayMusic(sceneCollection.MusicType);
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneCollection.SceneNames[0]));
+
+        Debug.Log("ACTIVE SCENE SET: " + sceneCollection.SceneNames[0]);
+
+        if (LoadingComplete != null) LoadingComplete();
+
+        if (sceneCollection.MusicType != MusicTrackType.NoMusic) AudioManager.instance.PlayMusic(sceneCollection.MusicType);
         state = sceneCollection.State;
 
         if (HideSettings != null) HideSettings();
