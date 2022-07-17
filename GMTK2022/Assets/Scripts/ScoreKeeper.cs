@@ -15,6 +15,14 @@ public class ScoreKeeper : MonoBehaviour
         scoreCollectible = 0;
     }
 
+    private void OnEnable() {
+        DieController.MoveStarted += DiceUp;
+    }
+
+    private void OnDisable() {
+        DieController.MoveStarted -= DiceUp;
+    }
+
     /*
     private void Update()
     {
