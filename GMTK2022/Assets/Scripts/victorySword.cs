@@ -13,6 +13,7 @@ public class victorySword : MonoBehaviour
     public float elapsedTime;
     public float percentageComplete;
     public bool changing = false;
+    public bool playSound = false;
 
     public GameObject sword;
 
@@ -24,6 +25,11 @@ public class victorySword : MonoBehaviour
     {
         if (victoryPoints == 1 && changing == true)
         {
+            if (playSound == true)
+            {
+                AudioManager.instance.PlaySound(SoundName.SwordRising);
+                playSound = false;
+            }
             elapsedTime += Time.deltaTime;
             percentageComplete = elapsedTime / desiredDuration;
             sword.gameObject.transform.position = Vector3.Lerp(startPos.transform.position, stepPos.transform.position, percentageComplete);
@@ -32,11 +38,17 @@ public class victorySword : MonoBehaviour
             {
                 changing = false;
                 elapsedTime = 0;
+                playSound = true;
             }
         }
 
         if (victoryPoints == 2 && changing == true)
         {
+            if (playSound == true)
+            {
+                AudioManager.instance.PlaySound(SoundName.SwordRising);
+                playSound = false;
+            }
             elapsedTime += Time.deltaTime;
             percentageComplete = elapsedTime / desiredDuration;
             sword.gameObject.transform.position = Vector3.Lerp(stepPos.transform.position, endPos.transform.position, percentageComplete);
@@ -46,6 +58,7 @@ public class victorySword : MonoBehaviour
                 changing = false;
                 elapsedTime = 0;
                 sword.GetComponent<Rigidbody>().isKinematic = false;
+                playSound = true;
             }
         }
     }
