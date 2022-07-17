@@ -12,6 +12,7 @@ public class victorySword : MonoBehaviour
     public float desiredDuration;
     public float elapsedTime;
     public float percentageComplete;
+    public bool changing = false;
 
     public GameObject sword;
 
@@ -21,23 +22,32 @@ public class victorySword : MonoBehaviour
     }
     private void Update()
     {
-        if (victoryPoints == 1)
+        if (victoryPoints == 1 && changing == true)
         {
-            while (percentageComplete < 0.95f)
+            elapsedTime += Time.deltaTime;
+            percentageComplete = elapsedTime / desiredDuration;
+            sword.gameObject.transform.position = Vector3.Lerp(startPos.transform.position, stepPos.transform.position, percentageComplete);
+            
+            if (percentageComplete >= 1)
             {
-                elapsedTime += Time.deltaTime;
-                percentageComplete = elapsedTime / desiredDuration;
-                sword.gameObject.transform.position = Vector3.Lerp(startPos.transform.position, stepPos.transform.position, percentageComplete);
+                changing = false;
+                elapsedTime = 0;
             }
         }
-    }
-    public void Rise()
-    {
-        if (victoryPoints == 1)
+
+        if (victoryPoints == 2 && changing == true)
         {
+            elapsedTime += Time.deltaTime;
+            percentageComplete = elapsedTime / desiredDuration;
+            sword.gameObject.transform.position = Vector3.Lerp(stepPos.transform.position, endPos.transform.position, percentageComplete);
 
+            if (percentageComplete >= 1)
+            {
+                changing = false;
+                elapsedTime = 0;
+                sword.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
-
     }
 
 }
