@@ -7,6 +7,7 @@ TagManager:
   - drag
   - DropArea
   - Dice
+  - Water
   layers:
   - Default
   - TransparentFX

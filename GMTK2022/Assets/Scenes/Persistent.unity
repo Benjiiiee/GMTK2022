@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2549979, g: 0.24156246, b: 0.2634637, a: 1}
+  m_IndirectSpecularColor: {r: 0.2549976, g: 0.24156219, b: 0.26346356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1291,20 +1291,20 @@ MonoBehaviour:
   Sounds:
   - Name: 1
     Clip: {fileID: 8300000, guid: 8d7a5e18634e59445ae41a47c16f0fc5, type: 3}
-    Volume: 1
-    Pitch: 0
+    Volume: 0.5
+    Pitch: 1
   - Name: 0
     Clip: {fileID: 8300000, guid: 0a221fc71cee25d45add549461ef0849, type: 3}
-    Volume: 1
-    Pitch: 0
+    Volume: 0.5
+    Pitch: 1
   - Name: 2
     Clip: {fileID: 8300000, guid: de7f47ac16261674b9cc8f605f272047, type: 3}
-    Volume: 1
-    Pitch: 0
+    Volume: 0.5
+    Pitch: 1
   - Name: 1
     Clip: {fileID: 8300000, guid: 8d7a5e18634e59445ae41a47c16f0fc5, type: 3}
-    Volume: 1
-    Pitch: 0
+    Volume: 0.5
+    Pitch: 1
   EffectsPool: {fileID: 692849063}
   musicController: {fileID: 718461832}
 --- !u!1 &803115034

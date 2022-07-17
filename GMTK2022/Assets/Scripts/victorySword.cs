@@ -13,54 +13,61 @@ public class victorySword : MonoBehaviour
     public float elapsedTime;
     public float percentageComplete;
     public bool changing = false;
-    public bool playSound = false;
+    public bool playSound;
 
     public GameObject sword;
 
     private void Start()
     {
         sword.GetComponent<Rigidbody>().isKinematic = true;
+        playSound = true;
     }
     private void Update()
     {
         if (victoryPoints == 1 && changing == true)
         {
-            if (playSound == true)
-            {
-                AudioManager.instance.PlaySound(SoundName.SwordRising);
-                playSound = false;
-            }
             elapsedTime += Time.deltaTime;
             percentageComplete = elapsedTime / desiredDuration;
             sword.gameObject.transform.position = Vector3.Lerp(startPos.transform.position, stepPos.transform.position, percentageComplete);
             
-            if (percentageComplete >= 1)
-            {
-                changing = false;
-                elapsedTime = 0;
-                playSound = true;
-            }
-        }
-
-        if (victoryPoints == 2 && changing == true)
-        {
             if (playSound == true)
             {
                 AudioManager.instance.PlaySound(SoundName.SwordRising);
                 playSound = false;
             }
+            if (percentageComplete > 1f)
+            {
+                changing = false;
+                elapsedTime = 0;
+                percentageComplete = 0;
+                playSound = true;
+            }
+        }
+
+
+
+        if (victoryPoints == 2 && changing == true)
+        {
             elapsedTime += Time.deltaTime;
             percentageComplete = elapsedTime / desiredDuration;
             sword.gameObject.transform.position = Vector3.Lerp(stepPos.transform.position, endPos.transform.position, percentageComplete);
+
+            if (playSound == true)
+            {
+                AudioManager.instance.PlaySound(SoundName.SwordRising);
+                playSound = false;
+            }
 
             if (percentageComplete >= 1)
             {
                 changing = false;
                 elapsedTime = 0;
+                percentageComplete = 0;
                 sword.GetComponent<Rigidbody>().isKinematic = false;
                 playSound = true;
             }
         }
     }
+
 
 }
