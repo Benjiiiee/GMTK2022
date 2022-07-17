@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WallTile : Tile
 {
@@ -10,8 +11,14 @@ public class WallTile : Tile
     }
     public override bool EnterTile(DieController die, out Vector3Int nextDirection, out int nextSteps, out Vector3Int nextGridPosition) {
         if(die.Steps > MovementCost) {
-            nextDirection = new Vector3Int(-die.Direction.x, 0, -die.Direction.z);
-            nextSteps = die.Steps - MovementCost;
+            if (die.Direction.y != 0) {
+                nextDirection = Vector3Int.down;
+                nextSteps = Math.Max(die.Steps - MovementCost, 1);
+            }
+            else {
+                nextDirection = new Vector3Int(-die.Direction.x, 0, -die.Direction.z);
+                nextSteps = die.Steps - MovementCost;
+            }
             nextGridPosition = die.GridPosition;
             return true;
         }
