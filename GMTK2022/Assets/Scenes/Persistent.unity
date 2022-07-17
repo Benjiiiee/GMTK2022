@@ -1304,8 +1304,8 @@ MonoBehaviour:
     Pitch: 1
   - Name: 0
     Clip: {fileID: 8300000, guid: 0a221fc71cee25d45add549461ef0849, type: 3}
-    Volume: 0.5
-    Pitch: 1
+    Volume: 0.15
+    Pitch: 1.76
   - Name: 2
     Clip: {fileID: 8300000, guid: de7f47ac16261674b9cc8f605f272047, type: 3}
     Volume: 0.5
