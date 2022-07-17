@@ -19,7 +19,7 @@ public class Drag_Object : MonoBehaviour
     }
 
     private void OnMouseOver() {
-        if (highlight != null) {
+        if (highlight != null && !IsDieOnDraggableStructure()) {
             highlight.OnHover();
         }
     }
@@ -28,6 +28,9 @@ public class Drag_Object : MonoBehaviour
     {
         if (isDraggable && isDiceMoving == false)
         {
+            // Check if the die is currently on the draggable structure
+            if (IsDieOnDraggableStructure()) return;
+
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffSet = gameObject.transform.position - GetMouseWorldPos();
             transform.GetComponent<Collider>().enabled = false;
@@ -42,6 +45,18 @@ public class Drag_Object : MonoBehaviour
             Cursor.visible = false;
             lastLocation = transform.position;
         }
+    }
+
+    private bool IsDieOnDraggableStructure() {
+        DieController die = LevelManager.instance.GetDieController();
+        if (die == null) return false;
+
+        TileComponent[] tiles = gameObject.GetComponentsInChildren<TileComponent>();
+        for(int i = 0; i < tiles.Length; i++) {
+            if (die.GridPosition == tiles[i].tile.GridPosition) return true;
+        }
+
+        return false;
     }
 
     private Vector3 GetMouseWorldPos()
