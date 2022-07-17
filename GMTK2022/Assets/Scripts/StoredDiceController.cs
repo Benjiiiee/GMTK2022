@@ -20,13 +20,27 @@ public class StoredDiceController : MonoBehaviour
     public TextMeshProUGUI TXT_D6;
     public TextMeshProUGUI TXT_D8;
 
+    private bool isInputEnabled = true;
+
     // Start is called before the first frame update
     private void OnEnable() {
         DieController.StoreDie += StoreDie;
+        DieController.MoveStarted += DisableButtons;
+        DieController.MoveCompleted += EnableButtons;
     }
 
     private void OnDisable() {
         DieController.StoreDie -= StoreDie;
+        DieController.MoveStarted -= DisableButtons;
+        DieController.MoveCompleted -= EnableButtons;
+    }
+
+    private void EnableButtons (){
+        isInputEnabled = true;
+    }
+
+    private void DisableButtons() {
+        isInputEnabled = false;
     }
 
     private void StoreDie(DieTypes type, int faceValue) {
@@ -50,6 +64,8 @@ public class StoredDiceController : MonoBehaviour
     }
 
     public void OnDieClicked(DieTypes type) {
+        if (!isInputEnabled) return;
+        
         switch (type) {
             case DieTypes.D4:
                 if (isD4Stored) {
