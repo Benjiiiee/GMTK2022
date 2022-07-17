@@ -12,6 +12,18 @@ public class Drag_Object : MonoBehaviour
     public bool isDraggable = false;
     public bool isDiceMoving = false;
 
+    private HighlightOnHover highlight;
+
+    private void Start() {
+        highlight = gameObject.GetComponent<HighlightOnHover>();
+    }
+
+    private void OnMouseOver() {
+        if (highlight != null) {
+            highlight.OnHover();
+        }
+    }
+
     private void OnMouseDown()
     {
         if (isDraggable && isDiceMoving == false)

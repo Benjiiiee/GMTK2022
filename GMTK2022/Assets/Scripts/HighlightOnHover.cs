@@ -4,34 +4,42 @@ using UnityEngine;
 
 public class HighlightOnHover : MonoBehaviour
 {
-    private Outline outline;
+    public Material HighlightMaterial;
+
     private float timeSinceHoveredOver;
     private float maxHighlightTime = 0.2f;
-    private float targetOpacity;
-    private float currentOpacity;
+    private MeshRenderer[] meshes;
+    private Material[] originalMaterials;
+    private bool isHighlighted;
 
-    private void Awake() {
-        outline = gameObject.AddComponent<Outline>();
-        outline.OutlineMode = Outline.Mode.OutlineAll;
-        outline.OutlineColor = new Color(39f/255f, 245f/255f, 226f/255f, 0.0f);
-        outline.OutlineWidth = 10f;
+    private void Start() {
+        meshes = GetComponentsInChildren<MeshRenderer>();
+        originalMaterials = new Material[meshes.Length];
+        for(int i = 0; i < originalMaterials.Length; i++) {
+            originalMaterials[i] = meshes[i].material;
+        }
     }
 
     public void OnHover() 
     {
-        targetOpacity = 0.75f;
-        timeSinceHoveredOver = 0f;
+        isHighlighted = true;
+        timeSinceHoveredOver = 0;
     }
 
     public void OnHoverExit() {
-        targetOpacity = 0.0f;
+        for (int i = 0; i < meshes.Length; i++) {
+            meshes[i].material = originalMaterials[i];
+        }
     }
 
     private void Update() {
-        currentOpacity = Mathf.MoveTowards(currentOpacity, targetOpacity, Time.deltaTime * 10.0f);
-        outline.OutlineColor = new Color(outline.OutlineColor.r, outline.OutlineColor.g, outline.OutlineColor.b, currentOpacity);
+        if(isHighlighted && timeSinceHoveredOver == 0f) {
+            for(int i = 0; i < meshes.Length;i++) {
+                meshes[i].material = HighlightMaterial;
+            }
+        }
 
-        if (targetOpacity > 0f) {
+        if (isHighlighted) {
             timeSinceHoveredOver += Time.deltaTime;
             if (timeSinceHoveredOver > maxHighlightTime) {
                 OnHoverExit();
