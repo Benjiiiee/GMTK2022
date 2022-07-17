@@ -756,6 +756,28 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5266417277424591833, guid: 4ff58b0d9390638428218f93895b4c7b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ff58b0d9390638428218f93895b4c7b, type: 3}
+--- !u!1 &3483020396622785571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2996279153089881330, guid: 4ff58b0d9390638428218f93895b4c7b, type: 3}
+  m_PrefabInstance: {fileID: 1856257768549288145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1183024399 &7750271238086555412
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483020396622785571}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
 --- !u!1 &4729144618213717708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6369087552898776605, guid: 4ff58b0d9390638428218f93895b4c7b, type: 3}

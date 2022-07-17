@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FirstGearGames.SmoothCameraShaker;
+
 
 public class victorySword : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class victorySword : MonoBehaviour
     public bool playSound;
 
     public GameObject sword;
+
+    //camera shake
+    public ShakeData MyShake;
+
 
     private void Start()
     {
@@ -33,6 +39,7 @@ public class victorySword : MonoBehaviour
             if (playSound == true)
             {
                 AudioManager.instance.PlaySound(SoundName.SwordRising);
+                CameraShakerHandler.Shake(MyShake);
                 playSound = false;
             }
             if (percentageComplete > 1f)
@@ -55,7 +62,9 @@ public class victorySword : MonoBehaviour
             if (playSound == true)
             {
                 AudioManager.instance.PlaySound(SoundName.SwordRising);
+                CameraShakerHandler.Shake(MyShake);
                 playSound = false;
+                
             }
 
             if (percentageComplete >= 1)
