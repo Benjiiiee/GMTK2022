@@ -481,9 +481,10 @@ GameObject:
   - component: {fileID: 5992140248687371431}
   - component: {fileID: 7243899656954702594}
   - component: {fileID: 4855855743960293320}
+  - component: {fileID: 3623775958501888707}
   m_Layer: 0
   m_Name: D6_prefab 1
-  m_TagString: Untagged
+  m_TagString: Dice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,6 +555,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3623775958501888707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369087552898776605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.63855344, y: 0.59639287, z: 0.63855344}
+  m_Center: {x: 0, y: 0.064504564, z: 0}
 --- !u!1001 &8740545353931006601
 PrefabInstance:
   m_ObjectHideFlags: 0

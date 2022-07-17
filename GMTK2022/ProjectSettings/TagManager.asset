@@ -6,6 +6,7 @@ TagManager:
   tags:
   - drag
   - DropArea
+  - Dice
   layers:
   - Default
   - TransparentFX
