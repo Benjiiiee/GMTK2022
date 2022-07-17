@@ -116,4 +116,8 @@ public class LevelManager : MonoBehaviour
     private void OnDestroy() {
         instance = null;
     }
+
+    public DieController GetDieController() {
+        return dieController;
+    }
 }
