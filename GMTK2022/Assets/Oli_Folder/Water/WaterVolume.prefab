@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 803608487268824365}
   - component: {fileID: 803608487268824366}
   - component: {fileID: 803608487268824367}
+  - component: {fileID: 3110824807052519641}
   m_Layer: 0
   m_Name: WaterVolume
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +103,19 @@ MonoBehaviour:
   TileSize: 0.5
   ShowDebug: 0
   RealtimeUpdates: 1
+--- !u!65 &3110824807052519641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803608487268824352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36.5, y: 16, z: 38}
+  m_Center: {x: 17.75, y: 8, z: 19}
 --- !u!1 &803608487383735258
 GameObject:
   m_ObjectHideFlags: 0
