@@ -40,7 +40,8 @@ public class CameraMove : MonoBehaviour
         cam.position = Vector3.SmoothDamp(cam.position, positions[currentPosition], ref velocity, smoothTime);
         //cam.rotation = Quaternion.Euler(Vector3.SmoothDamp(cam.eulerAngles, rotations[currentPosition], ref velocity, smoothTime));
         //cam.localEulerAngles = Vector3.SmoothDamp(cam.eulerAngles, rotations[currentPosition], ref velocity, smoothTime);
-        cam.LookAt(Vector3.zero);
+        //cam.LookAt(Vector3.zero);
+        cam.LookAt(new Vector3 (4,0,4));
     }
 
     public void ChangePosition(int oldPos, int currentPos)
