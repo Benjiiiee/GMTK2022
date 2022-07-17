@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        diceUsedTxt.text = "Dice used : " + scoreKeeper.GetComponent<ScoreKeeper>().diceUsed.ToString();
+        diceUsedTxt.text = "Dice rolls: " + scoreKeeper.GetComponent<ScoreKeeper>().diceUsed.ToString();
         scoreTxt.text = scoreKeeper.GetComponent<ScoreKeeper>().scoreCollectible.ToString() + " Points";
     }
 }
